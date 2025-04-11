@@ -1,0 +1,17 @@
+/* 호텔 리스트 전체 페이지 컨테이너 */
+.hotel-list-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #212529;
+  }
+  
+  /* 카드 리스트 그리드 */
+  .card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+    gap: 30px;
+  }
+  
