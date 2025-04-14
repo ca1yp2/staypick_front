@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "name": "서울 신라호텔",
+      "location": "서울",
+      "price": 250000,
+      "category": "호텔"
+    },
+    {
+      "id": 2,
+      "name": "제주 신라호텔",
+      "location": "제주",
+      "price": 220000,
+      "category": "호텔"
+    },
+    {
+      "id": 3,
+      "name": "부산 게스트하우스",
+      "location": "부산",
+      "price": 70000,
+      "category": "게스트하우스"
+    },
+    {
+      "id": 4,
+      "name": "강릉 펜션",
+      "location": "강릉",
+      "price": 120000,
+      "category": "펜션"
+    },
+    {
+      "id": 5,
+      "name": "양양 리조트",
+      "location": "양양",
+      "price": 180000,
+      "category": "리조트"
+    }
+  ]
+  

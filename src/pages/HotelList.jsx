@@ -1,34 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import hotels from '../data/hotels.json';
 import FilterBar from '../components/FilterBar';
-import HotelCard from '../components/HotelCard';
-import '../css/HotelList.css'; // 스타일은 따로 관리
+import '../css/HotelList.css';
 
 const HotelList = () => {
-  const hotelData = [
-    {
-      id: 1,
-      title: '힐튼 경주',
-      location: '경주시 경주보문관광단지 내',
-      price: '250,000원/박',
-      image: './image/image1.png',
-      rating: '⭐ 4.3 (5,532)',
-      reviewCount: 278,
-      reviews: [
-        { stars: '⭐⭐⭐⭐⭐', date: '2023.03.01', text: '프론트 직원이 친절해서 좋았어요!' },
-        { stars: '⭐⭐⭐⭐', date: '2023.06.12', text: '뷰도 좋고 방도 넓고 쾌적했어요.' },
-        { stars: '⭐⭐⭐⭐⭐', date: '2024.01.05', text: '경주 오면 또 여기 올 거예요!' }
-      ]
-    },
-  ];
+  const [location, setLocation] = useState('');
+  const [filteredHotels, setFilteredHotels] = useState([]);
+
+  const handleSearch = () => {
+    const results = hotels.filter((hotel) => {
+      const matchesLocation = location === '' || hotel.location.includes(location);
+      return matchesLocation;
+    });
+    setFilteredHotels(results);
+  };
 
   return (
-    <div className="hotel-list-page">
-      <FilterBar />
-      <div className="card-list">
-        {hotelData.map(hotel => (
-          <HotelCard key={hotel.id} hotel={hotel} />
-        ))}
+    <div className="hotel-list-container">
+      <div className="page-title">
+        <h2>원하는 숙소를 조건별로 검색해보세요</h2>
       </div>
+
+      {/* ✅ FilterBar 컴포넌트 연결 */}
+      <FilterBar
+        location={location}
+        setLocation={setLocation}
+        onSearch={handleSearch}
+      />
+
+      {/* 여기에 호텔 리스트 출력도 추가 가능 */}
     </div>
   );
 };

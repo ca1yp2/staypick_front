@@ -1,17 +1,22 @@
-/* 호텔 리스트 전체 페이지 컨테이너 */
-.hotel-list-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: #fff;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: #212529;
-  }
-  
-  /* 카드 리스트 그리드 */
-  .card-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
-    gap: 30px;
-  }
-  
+.hotel-list-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #fafafa;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.page-title h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.hotel-results {
+  margin-top: 24px;
+}
