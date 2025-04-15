@@ -12,7 +12,9 @@ const RegionModal = ({ onSelect, onClose }) => {
           <span>지역선택</span>
           <button onClick={onClose}>✕</button>
         </div>
+
         <div className="modal-body">
+          {/* 왼쪽 지역 사이드바 */}
           <div className="region-sidebar">
             {Object.keys(regions).map((region) => (
               <button
@@ -24,11 +26,19 @@ const RegionModal = ({ onSelect, onClose }) => {
               </button>
             ))}
           </div>
+
+          {/* 오른쪽 지역 리스트 */}
           <div className="region-list">
             <div className="region-list-header">
               <strong>{selectedRegion}</strong>
-              <button className="select-all">전체선택</button>
+              <button
+                className="select-all"
+                onClick={() => onSelect(`${selectedRegion} 전체`)}
+              >
+                전체선택
+              </button>
             </div>
+
             <ul>
               {regions[selectedRegion].map((item, idx) => (
                 <li key={idx}>

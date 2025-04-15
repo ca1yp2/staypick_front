@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { RiMapPinLine, RiCalendarLine, RiFilter3Line } from 'react-icons/ri';
+import { RiMapPinLine, RiFilter3Line } from 'react-icons/ri';
 import RegionModal from './RegionModal';
+import DateRangePicker from './DateRangePicker';
 import '../css/components/FilterBar.css';
 
 const FilterBar = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
 
   const handleSelect = (value) => {
     setSelectedRegion(value);
     setShowModal(false);
+  };
+
+  const handleDateChange = (checkIn, checkOut) => {
+    setCheckInDate(checkIn);
+    setCheckOutDate(checkOut);
   };
 
   return (
@@ -27,9 +35,8 @@ const FilterBar = () => {
           readOnly
         />
 
-        <button className="date-button">
-          <RiCalendarLine /> 2025.03.14~2025.03.21
-        </button>
+        {/* ✅ 달력 range-picker로 대체 */}
+        <DateRangePicker onDateChange={handleDateChange} />
 
         <button className="search-btn">검색</button>
       </div>
