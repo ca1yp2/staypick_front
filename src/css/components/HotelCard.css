@@ -28,15 +28,18 @@
   font-size: 18px;
   font-weight: 600;
   color: #333;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .hotel-location,
 .hotel-category,
 .hotel-price {
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  color: #666;
-  margin: 2px 0;
+  color: #555;
+  margin: 4px 0;
+  gap: 6px; /* 아이콘과 텍스트 간격 */
 }
 
 .hotel-price {
@@ -46,7 +49,7 @@
 
 .reserve-btn {
   align-self: flex-start;
-  margin-top: 10px;
+  margin-top: 14px;
   padding: 8px 16px;
   background-color: #5c3ec6;
   color: #fff;
