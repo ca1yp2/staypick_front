@@ -55,3 +55,6 @@ img{
   object-fit: cover;
   max-width: 100%;
 }
+.container{
+  margin-bottom: 50px;
+}

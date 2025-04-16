@@ -210,8 +210,8 @@
   --bs-btn-disabled-border-color: rgba(0,0,0,0);
 }
 .image {
-  width: 185.5px;
-  height: 185.5px;
+  width: 177px;
+  height: 177px;
   border-radius: 10px;
   margin:25px 15px;
   object-fit: cover;
@@ -224,12 +224,12 @@
   margin-left: 30px !important;
 }
 .namenbtn button{
-  margin-left: 14px;
+  margin-left: 9px;
 }
 .rtname {
   font-weight: 700;
   color: #333;
-  font-size: 22px;
+  font-size: 20px;
   white-space: nowrap;
 }
 .rtinnerbox {
@@ -243,7 +243,7 @@
 .ribox {
   font-weight: 500;
   color: #333;
-  font-size: 15px;
+  font-size: 14px;
   padding-left: 20px;
 }
 .ribox>.row{
