@@ -12,7 +12,7 @@ const Header = () => {
           </a>
         </div>
         <nav className="center">
-          <a href="/accomodation">숙박예약</a>
+          <a href="/HotelList">숙박예약</a>
           <a href="/board">게시판</a>
           <a href="/mypage">마이페이지</a>
         </nav>

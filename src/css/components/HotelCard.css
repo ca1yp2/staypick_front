@@ -1,112 +1,65 @@
-.card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 20px;
+.hotel-card {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.hotel-image img {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-right: 1px solid #f0f0f0;
+}
+
+.hotel-info {
+  padding: 16px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.card-top {
-  display: flex;
-  gap: 20px;
-  position: relative;
-}
-
-.thumbnail {
-  flex-shrink: 0;
-  width: 180px;
-  height: 130px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-info {
-  flex: 1;
-}
-
-.card-title-row {
-  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
 }
 
-.card-title-row h2 {
+.hotel-name {
   font-size: 18px;
-  margin: 0 0 4px;
-}
-
-.heart-icon {
-  font-size: 20px;
-  color: #e74c3c;
-  cursor: pointer;
-}
-
-.location {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 4px;
-}
-
-.view-room {
-  font-size: 14px;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.price-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.price {
-  text-align: right;
-  font-size: 16px;
   font-weight: 600;
-  color: #000;
-}
-
-.price span {
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
-  color: #555;
-}
-
-/* 리뷰 영역 */
-.review-box {
-  background: #f9f9f9;
-  padding: 16px;
-  border-radius: 10px;
-}
-
-.review-header {
-  display: flex;
-  font-size: 14px;
-  font-weight: 500;
   color: #333;
-  gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.review-items {
+.hotel-location,
+.hotel-category,
+.hotel-price {
   display: flex;
-  gap: 12px;
-  overflow-x: auto;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0;
+  gap: 6px; /* 아이콘과 텍스트 간격 */
 }
 
-.review-item {
-  background: #fff;
-  padding: 12px;
-  border-radius: 10px;
-  min-width: 180px;
-  box-shadow: 0 1px 4px rgba
+.hotel-price {
+  font-weight: bold;
+  color: #222;
+}
+
+.reserve-btn {
+  align-self: flex-start;
+  margin-top: 14px;
+  padding: 8px 16px;
+  background-color: #5c3ec6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reserve-btn:hover {
+  background-color: #432ca9;
 }

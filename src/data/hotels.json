@@ -1,0 +1,202 @@
+[
+<<<<<<< HEAD
+  {
+    "id": 1,
+    "name": "경주 보문단지 한옥별당",
+    "location": "경주 보문단지",
+    "category": "호텔",
+    "price": 246495,
+    "image": "/images/1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "제주 서귀포 프리미엄",
+    "location": "제주 서귀포",
+    "category": "게스트하우스",
+    "price": 152218,
+    "image": "/images/2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "서울 종로 산들바람",
+    "location": "서울 종로",
+    "category": "호텔",
+    "price": 284921,
+    "image": "/images/3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "서울 종로 한옥별당",
+    "location": "서울 종로",
+    "category": "호텔",
+    "price": 282236,
+    "image": "/images/4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "부산 해운대 산들바람",
+    "location": "부산 해운대",
+    "category": "호텔",
+    "price": 73264,
+    "image": "/images/5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "부산 해운대 라온",
+    "location": "부산 해운대",
+    "category": "호텔",
+    "price": 128683,
+    "image": "/images/6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "강릉 안목항 블루오션",
+    "location": "강릉 안목항",
+    "category": "호텔",
+    "price": 244755,
+    "image": "/images/7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "제주 서귀포 모던하우스",
+    "location": "제주 서귀포",
+    "category": "펜션",
+    "price": 244554,
+    "image": "/images/8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "제주 서귀포 라온",
+    "location": "제주 서귀포",
+    "category": "호텔",
+    "price": 126029,
+    "image": "/images/9.jpg"
+  },
+  {
+    "id": 10,
+    "name": "강릉 안목항 쉼표",
+    "location": "강릉 안목항",
+    "category": "게스트하우스",
+    "price": 235340,
+    "image": "/images/10.jpg"
+  },
+  {
+    "id": 11,
+    "name": "서울 강남 쉼표",
+    "location": "서울 강남",
+    "category": "호텔",
+    "price": 240742,
+    "image": "/images/11.jpg"
+  },
+  {
+    "id": 12,
+    "name": "제주 서귀포 바다향기",
+    "location": "제주 서귀포",
+    "category": "펜션",
+    "price": 197288,
+    "image": "/images/12.jpg"
+  },
+  {
+    "id": 13,
+    "name": "서울 종로 프리미엄",
+    "location": "서울 종로",
+    "category": "호텔",
+    "price": 289232,
+    "image": "/images/13.jpg"
+  },
+  {
+    "id": 14,
+    "name": "인천 송도 한옥별당",
+    "location": "인천 송도",
+    "category": "호텔",
+    "price": 99498,
+    "image": "/images/14.jpg"
+  },
+  {
+    "id": 15,
+    "name": "강릉 안목항 프리미엄",
+    "location": "강릉 안목항",
+    "category": "펜션",
+    "price": 87416,
+    "image": "/images/15.jpg"
+  },
+  {
+    "id": 16,
+    "name": "부산 해운대 프리미엄",
+    "location": "부산 해운대",
+    "category": "펜션",
+    "price": 136553,
+    "image": "/images/16.jpg"
+  },
+  {
+    "id": 17,
+    "name": "서울 강남 모던하우스",
+    "location": "서울 강남",
+    "category": "게스트하우스",
+    "price": 191104,
+    "image": "/images/17.jpg"
+  },
+  {
+    "id": 18,
+    "name": "경주 보문단지 힐튼",
+    "location": "경주 보문단지",
+    "category": "호텔",
+    "price": 293348,
+    "image": "/images/18.jpg"
+  },
+  {
+    "id": 19,
+    "name": "서울 강남 라온",
+    "location": "서울 강남",
+    "category": "호텔",
+    "price": 208954,
+    "image": "/images/19.jpg"
+  },
+  {
+    "id": 20,
+    "name": "부산 해운대 쉼표",
+    "location": "부산 해운대",
+    "category": "호텔",
+    "price": 78451,
+    "image": "/images/20.jpg"
+  }
+]
+=======
+    {
+      "id": 1,
+      "name": "서울 신라호텔",
+      "location": "서울",
+      "price": 250000,
+      "category": "호텔"
+    },
+    {
+      "id": 2,
+      "name": "제주 신라호텔",
+      "location": "제주",
+      "price": 220000,
+      "category": "호텔"
+    },
+    {
+      "id": 3,
+      "name": "부산 게스트하우스",
+      "location": "부산",
+      "price": 70000,
+      "category": "게스트하우스"
+    },
+    {
+      "id": 4,
+      "name": "강릉 펜션",
+      "location": "강릉",
+      "price": 120000,
+      "category": "펜션"
+    },
+    {
+      "id": 5,
+      "name": "양양 리조트",
+      "location": "양양",
+      "price": 180000,
+      "category": "리조트"
+    }
+  ]
+  
+>>>>>>> e3fa647 (Footer부분 추가)

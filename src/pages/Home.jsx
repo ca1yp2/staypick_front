@@ -16,8 +16,8 @@ const Home = () => {
             <br />
             STAYPICK입니다.</p>
           <button
-            className="reserve-btn"
-            onClick={() => navigate('/accomodation')}
+            className="main-btn"
+            onClick={() => navigate('/HotelList')}
           >
             숙박 예약하기
           </button>

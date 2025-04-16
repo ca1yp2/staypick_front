@@ -1,49 +1,45 @@
 import React from 'react';
-import { RiMapPinLine, RiHeartLine } from 'react-icons/ri';
+<<<<<<< HEAD
+import {
+  RiMapPinLine,
+  RiHotelLine,
+  RiMoneyDollarCircleLine,
+} from 'react-icons/ri';
+=======
+>>>>>>> e3fa647 (Footer부분 추가)
 import '../css/components/HotelCard.css';
-import defaultImage from '../assets/images/main-banner.png';
 
 const HotelCard = ({ hotel }) => {
   return (
-    <div className="card">
-      <div className="card-top">
-        <div className="thumbnail">
-          <img src={hotel.image || defaultImage} alt="숙소 이미지" />
-        </div>
-        <div className="card-info">
-          <div className="card-title-row">
-            <h2>{hotel.title}</h2>
-            <RiHeartLine className="heart-icon" />
-          </div>
-          <div className="location">
-            <RiMapPinLine /> {hotel.location}
-          </div>
-          <div className="view-room">객실보기</div>
-        </div>
-        <div className="price-box">
-          <div className="price">
-            <strong>{hotel.price}</strong><span>/1박</span>
-          </div>
-        </div>
+    <div className="hotel-card">
+      <div className="hotel-image">
+        <img src={`/images/${hotel.id}.jpg`} alt={hotel.name} />
       </div>
+<<<<<<< HEAD
 
-      <div className="review-box">
-        <div className="review-header">
-          <span>{hotel.rating}</span>
-          <span>· 숙소리뷰({hotel.reviewCount})</span>
-        </div>
-        <div className="review-items">
-          {hotel.reviews.slice(0, 3).map((review, idx) => (
-            <div className="review-item" key={idx}>
-              <div className="stars">{review.stars}</div>
-              <div className="date">{review.date}</div>
-              <div className="text">{review.text}</div>
-            </div>
-          ))}
-        </div>
-        <div className="review-footer">
-          <a href="#">전체보기 &gt;</a>
-        </div>
+      <div className="hotel-info">
+        <h3 className="hotel-name">{hotel.name}</h3>
+
+        <p className="hotel-location">
+          <RiMapPinLine /> {hotel.location}
+        </p>
+
+        <p className="hotel-category">
+          <RiHotelLine /> {hotel.category}
+        </p>
+
+        <p className="hotel-price">
+          <RiMoneyDollarCircleLine /> ₩{hotel.price.toLocaleString()} / 1박
+        </p>
+
+=======
+      <div className="hotel-info">
+        <h3 className="hotel-name">{hotel.name}</h3>
+        <p className="hotel-location">📍 {hotel.location}</p>
+        <p className="hotel-category">{hotel.category}</p>
+        <p className="hotel-price">₩{hotel.price.toLocaleString()} / 1박</p>
+>>>>>>> e3fa647 (Footer부분 추가)
+        <button className="reserve-btn">예약하기</button>
       </div>
     </div>
   );
