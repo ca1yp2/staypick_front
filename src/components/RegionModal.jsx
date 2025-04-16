@@ -54,4 +54,8 @@ const RegionModal = ({ onSelect, onClose }) => {
   );
 };
 
+<<<<<<< HEAD
 export default RegionModal;
+=======
+export default RegionModal;
+>>>>>>> e3fa647 (Footer부분 추가)

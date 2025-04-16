@@ -35,4 +35,8 @@ const DateRangePicker = ({ onDateChange }) => {
   );
 };
 
+<<<<<<< HEAD
 export default DateRangePicker;
+=======
+export default DateRangePicker;
+>>>>>>> e3fa647 (Footer부분 추가)

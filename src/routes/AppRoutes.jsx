@@ -8,6 +8,7 @@ import Payment from '../pages/Payment'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import MyPage from '../pages/MyPage'
+import Board from '../pages/Board' // ✅ Board 컴포넌트 추가
 
 const AppRoutes = () => (
   <Routes>
@@ -20,6 +21,7 @@ const AppRoutes = () => (
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/mypage' element={<MyPage />} />
+        <Route path='/board' element={<Board />} /> {/* ✅ 게시판 경로 추가 */}
       </Route>
   </Routes>
 );
