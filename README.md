@@ -17,14 +17,17 @@ npm i axios / yarn add axios
 npm i react-icons --save
 
 - *dayjs 설치 (날짜 처리 용도)*:
-npm i d
+npm i dayjs
+
+- *datepicker 설치*
+npm install react-datepicker date-fns
 
 - *카카오맵 설치*:
 npm i react-kakao-maps-sdk / yarn add react-kakao-maps-sdk
 
 
 ## 해야 될 일
-
-- HotelCard,  ReviewItem, Admin,  List, Login, MyPage, NotFound,Register, Review 리엑트로 만들기
-- app.jsx에 List, Review, NotFound, Admin, HotelCard, ReviewItem 추가하기
+- Footer 만들기
+- HotelCard, LocationCheckMenu, ReviewItem, Admin, Detail, List, LocationCheck, Login, MyPage, NotFound, Pay, Register, Review 리엑트로 만들기
+- AppRoute.jsx에 Review, NotFound, Admin, HotelCard, ReviewItem 추가하기
 

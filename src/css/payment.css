@@ -1,0 +1,302 @@
+@import url(../index.css);
+.row>* {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.gray-bg{
+    background-color: #f8f8f8;
+}
+.rectangle {
+  width: 1000px;
+  height: 2295px;
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+.text-wrapper-2 {
+  font-weight: 700;
+  color: #000000;
+  font-size: 38px;
+  letter-spacing: 0;
+  text-align: center;
+  padding-top: 80px;
+}
+.text-wrapper-3 {
+  font-weight: 700;
+  color: #000000;
+  font-size: 28px;
+  letter-spacing: 0;
+  padding-left: 120px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.rectangle-2 {
+  margin-left: 120px;
+  width: 747px;
+  height: 70px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.rectangle-2 p{
+  padding-top: 18px;
+  padding-left: 20px;
+  font-weight: 400;
+  color: #666;
+  font-size: 20px;
+}
+.rectangle-2 p svg{
+  float: right;
+  margin-right: 20px;
+  font-size: 24px;
+}
+.timebox{
+  padding-left: 136px;
+}
+.checkin, .checkout{
+  width: 440px;
+}
+.checkin-name {
+  height: 30px;
+  font-weight: 600;
+  color: #000000;
+  font-size: 19px;
+  line-height: 50px;
+}
+.checkin-date {
+  height: 30px;
+  font-weight: 500;
+  color: #000000;
+  font-size: 22px;
+  line-height: 50px;
+}
+.checkin-time {
+  height: 30px;
+  top: 602px;
+  left: 580px;
+  font-weight: 500;
+  color: #000000;
+  font-size: 17px;
+  line-height: 50px;
+}
+.checkout-name {
+  height: 30px;
+  font-weight: 600;
+  color: #000000;
+  font-size: 19px;
+  line-height: 50px;
+}
+.checkout-date {
+  height: 30px;
+  font-weight: 500;
+  color: #000000;
+  font-size: 22px;
+  line-height: 50px;
+}
+.checkout-time {
+  height: 30px;
+  font-weight: 500;
+  color: #000000;
+  font-size: 17px;
+  line-height: 50px;
+}
+.pricebox{
+  width: 100%;
+  padding-left: 136px;
+}
+.text-wrapper-14 {
+  margin-top: 35px;
+  font-weight: 400;
+  color: #000000;
+  font-size: 17px;
+  line-height: 50px;
+  width: 520px;
+}
+.text-wrapper-16 {
+  margin-top: 30px;
+  font-weight: 500;
+  color: #bbbdc0;
+  font-size: 21px;
+  line-height: 50px;
+}
+.element {
+  font-weight: 500;
+  color: #000000;
+  font-size: 30px;
+  line-height: 50px;
+}
+.rectangle-3 {
+  width: 744px;
+  height: 77px;
+  border-radius: 19px;
+  border: 1px solid;
+  border-color: #bbbdc0;
+  margin-left: 120px !important;
+  z-index: 1;
+}
+.text-wrapper-13 {
+  padding-top: 11px;
+  padding-left: 30px;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  line-height: 50px;
+}
+.checkblock{
+  padding-left: 37px;
+  padding-top: 24px;
+}
+.inputcheckcircle {
+    appearance: none;
+    box-sizing: border-box;
+    background-clip: content-box;
+    padding: 0.25em;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: #ddd;
+    border: 1px solid gray;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.inputcheckcircle:checked {
+    border-color: var(--blue);
+    background-color: var(--blue);
+}
+.checktextbox{
+    margin-right: 40px;
+}
+.checktext{
+  margin-left: 10px;
+}
+.text-primary{
+  float: right;
+  text-decoration: none;
+  font-weight: 600;
+  padding-right: 30px;
+}
+.rectangle-2 a:hover{
+  color: var(--blue) !important;
+  text-decoration: none;
+}
+.sameinfo{
+  padding-left: 136px;
+  padding-right: 136px;
+  font-size: 20px;
+}
+.sameinfo input[type="checkbox"]{
+  zoom: 1.6;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.sameinfo span{
+  padding-left: 10px;
+}
+.userinfo{
+  margin-left: 120px;
+  margin-right: 120px;
+  margin-top: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ccc;
+}
+.text-wrapper-34 {
+  font-weight: 400;
+  color: #4f5051;
+  font-size: 23px;
+  line-height: 50px;
+}
+.text-wrapper-36 {
+  font-weight: 400;
+  color: #000000;
+  font-size: 27px;
+  line-height: 50px;
+}
+.rectangle-4 {
+  position: relative;
+  width: 744px;
+  height: 59px;
+  border-radius: 19px;
+  border: 1px solid;
+  border-color: #bbbdc0;
+  margin-left: 120px;
+  margin-top: 10px;
+  z-index: 2;
+  background-color: #fff;
+}
+.rectangle-4 span{
+  padding-left: 10px;
+  font-weight: 400;
+  color: #4f5051;
+  font-size: 20px;
+  line-height: 50px;
+}
+.couponbox{
+  position: relative;
+}
+.circle3{
+  position: absolute;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid #999;
+  border-radius: 50%;
+  top: 14px;
+  left: 23px;
+  z-index: 2;
+}
+.mycoupon{
+  font-weight: 600 !important;
+  cursor: pointer;
+  margin-left: 470px;
+}
+.div {
+  position: absolute;
+  width: 744px;
+  height: 191px;
+  top: 1400px;
+  margin-left: 120px;
+  border-bottom: 1px solid #bbbdc0;
+  border-left: 1px solid #bbbdc0;
+  border-right: 1px solid #bbbdc0;
+  border-radius: 19px;
+  padding: 50px 35px;
+  z-index: 1;
+}
+.text-wrapper-39 {
+  font-weight: 700;
+  color: #4f5051;
+  font-size: 20px;
+  line-height: normal;
+}
+.text-wrapper-41 {
+  padding-top: 3px;
+  font-weight: 700;
+  color: #999;
+  font-size: 14px;
+  line-height: normal;
+}
+.couponbox>.btn{
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+.text-wrapper-6 {
+  font-weight: 700;
+  color: #000000;
+  font-size: 29px;
+  line-height: 50px;
+  padding-left: 120px;
+  padding-top: 200px;
+  padding-bottom: 10px;
+}
+.text-wrapper-28 {
+  font-weight: 400;
+  color: #000000;
+  font-size: 22px;
+  line-height: 50px;
+  padding-left: 120px;
+}
+.text-wrapper-28 span{
+  float: right;
+  padding-right: 140px;
+}
+.text-wrapper-3 span{
+  float: right;
+  padding-right: 140px;
+}
