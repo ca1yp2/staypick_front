@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bf8fef76c1246bb90e2e6e4c6586fb7cca1f3c55
 @import url('../index.css');
 .room-type {
   margin-top: 50px;
@@ -281,6 +284,7 @@
 }
 .swiper-pagination {
   position: relative !important;
+<<<<<<< HEAD
 =======
 @import url('../index.css');
 .room-type {
@@ -581,4 +585,6 @@
 .swiper-pagination {
   position: relative !important;
 >>>>>>> origin
+=======
+>>>>>>> bf8fef76c1246bb90e2e6e4c6586fb7cca1f3c55
 }
