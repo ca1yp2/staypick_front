@@ -9,13 +9,7 @@ const Layout = () => {
   return (
     <>
         <Header />
-        <Container>
-            <Row>
-                <Col>
-                    <Outlet />
-                </Col>
-            </Row>
-        </Container>
+        <Outlet />
         <Footer />
     </>
   )
