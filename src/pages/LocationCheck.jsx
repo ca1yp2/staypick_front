@@ -1,9 +1,9 @@
 import React from 'react'
 
-const LocationChenk = () => {
+const LocationCheck = () => {
   return (
-    <div>LocationChenk</div>
+    <div>LocationCheck</div>
   )
 }
 
-export default LocationChenk
+export default LocationCheck

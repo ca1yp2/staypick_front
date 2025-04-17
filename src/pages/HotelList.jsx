@@ -1,34 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import hotelData from '../data/hotels.json'; ❌ import 방식 제거
+import axios from 'axios';
 import FilterBar from '../components/FilterBar';
 import HotelCard from '../components/HotelCard';
-import '../css/HotelList.css'; // 스타일은 따로 관리
+import '../css/HotelList.css';
 
 const HotelList = () => {
-  const hotelData = [
-    {
-      id: 1,
-      title: '힐튼 경주',
-      location: '경주시 경주보문관광단지 내',
-      price: '250,000원/박',
-      image: './image/image1.png',
-      rating: '⭐ 4.3 (5,532)',
-      reviewCount: 278,
-      reviews: [
-        { stars: '⭐⭐⭐⭐⭐', date: '2023.03.01', text: '프론트 직원이 친절해서 좋았어요!' },
-        { stars: '⭐⭐⭐⭐', date: '2023.06.12', text: '뷰도 좋고 방도 넓고 쾌적했어요.' },
-        { stars: '⭐⭐⭐⭐⭐', date: '2024.01.05', text: '경주 오면 또 여기 올 거예요!' }
-      ]
-    },
-  ];
+  const [hotels, setHotels] = useState([]);
+  const [filteredHotels, setFilteredHotels] = useState([]);
+
+  // 필터 조건 상태
+  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('전체선택');
+  const [checkInDate, setCheckInDate] = useState(null);
+  const [checkOutDate, setCheckOutDate] = useState(null);
+
+  // 검색 여부 상태
+  const [hasSearched, setHasSearched] = useState(false);
+
+  // 호텔 데이터 로딩
+  useEffect(() => {
+    axios.get('/data/hotels.json') // ✅ public 경로에서 데이터 비동기로 불러오기
+      .then((res) => {
+        setHotels(res.data);
+        setFilteredHotels(res.data); // 전체 데이터 보유
+      })
+      .catch((err) => console.error('호텔 데이터 로딩 실패', err));
+  }, []);
+
+  // 검색 실행
+  const handleSearch = () => {
+    const regionKeyword = selectedRegion.replace(' 전체', '').trim();
+
+    const result = hotels.filter((hotel) => {
+      const matchRegion = regionKeyword
+        ? hotel.location.includes(regionKeyword)
+        : true;
+
+      const matchCategory =
+        selectedCategory && selectedCategory !== '전체선택'
+          ? hotel.category === selectedCategory
+          : true;
+
+      return matchRegion && matchCategory;
+    });
+
+    setFilteredHotels(result);
+    setHasSearched(true); // 검색 완료 상태
+  };
 
   return (
     <div className="hotel-list-page">
-      <FilterBar />
-      <div className="card-list">
-        {hotelData.map(hotel => (
-          <HotelCard key={hotel.id} hotel={hotel} />
-        ))}
-      </div>
+      <FilterBar
+        onRegionChange={setSelectedRegion}
+        onDateChange={(checkIn, checkOut) => {
+          setCheckInDate(checkIn);
+          setCheckOutDate(checkOut);
+        }}
+        onCategoryChange={setSelectedCategory}
+        onSearch={handleSearch}
+      />
+
+      {/*검색 전에는 아무 것도 안 보이게 */}
+      {hasSearched && (
+        <div className="hotel-card-container">
+          {filteredHotels.length > 0 ? (
+            filteredHotels.map((hotel) => (
+              <HotelCard key={hotel.id} hotel={hotel} />
+            ))
+          ) : (
+            <p>검색 결과가 없습니다.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
