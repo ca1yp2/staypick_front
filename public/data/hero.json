@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
       "id": 1,
@@ -32,4 +33,40 @@
       "discountprice": "269,600원",
       "regularprice": "650,000원"
     }
+=======
+[
+    {
+      "id": 1,
+      "image": "image.png",
+      "name": "디럭스 트윈 핸디캡룸(산 전망)",
+      "personnel": "기준3인 · 최대4인(유료)",
+      "checkin": "입실 15:00",
+      "checkout": "퇴실 11:00",
+      "extra": "킹베드 185X200cm / 취소,변경,환불 불가 상품",
+      "discountprice": "232,000원",
+      "regularprice": "600,000원"
+    },
+    {
+      "id": 2,
+      "image": "image.png",
+      "name": "디럭스 트윈 핸디캡룸(호수 전망)",
+      "personnel": "기준3인 · 최대4인(유료)",
+      "checkin": "입실 15:00",
+      "checkout": "퇴실 11:00",
+      "extra": "킹베드 185X200cm / 취소,변경,환불 불가 상품",
+      "discountprice": "269,600원",
+      "regularprice": "650,000원"
+    },
+    {
+      "id": 3,
+      "image": "image.png",
+      "name": "디럭스 트윈 핸디캡룸(산 전망)",
+      "personnel": "기준4인 · 최대5인(유료)",
+      "checkin": "입실 15:00",
+      "checkout": "퇴실 11:00",
+      "extra": "킹베드 185X200cm / 취소,변경,환불 불가 상품",
+      "discountprice": "269,600원",
+      "regularprice": "650,000원"
+    }
+>>>>>>> origin/dev
   ]

@@ -1,0 +1,76 @@
+input:focus { outline:none; }
+select:focus { outline:none; }
+
+.signUpPage{
+    text-align: center;
+}
+.signUpPage h1{
+    margin: 20px 0;
+    font-size: 40px;
+    font-weight: 700;
+}
+.signUpPage-box{
+    width: 600px;
+    padding:15px;
+    padding-left: 50px;
+    margin: 0 auto;
+    text-align: start;
+    position: relative;
+}
+.signUpPage-box input{
+    display: block;
+    margin-bottom: 8px;
+    width: 500px;
+    height: 45px;
+    font-size: 15px;
+    text-indent:15px;
+    border: 2px solid #ddd
+}
+.signUpTitle{
+    font-weight: 600;
+}
+.error-message{
+    margin-left: 10px;
+    font-size: 13px;
+    color: red;
+}
+.idCheck-btn{
+    width: 100px;
+    height: 35px;
+    position: absolute;
+    top: 44px;
+    right: 55px;
+    border: none;
+    background-color: #5c5c5c;
+    color: #fff;
+    font-size: 13px;
+}
+.signUp-Check-btn{
+    width: 500px;
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    background-color: #5c5c5c;
+    color: #fff;
+    margin-top: 50px;
+    font-weight: 700;
+}
+.birth-box{
+    display: flex;
+    width: 93.5%;
+}
+#birth-year,
+#birth-day,
+.birth-box select{
+    width: 160px;
+    height: 50px;
+}
+#birth-year,
+.birth-box select{
+    margin-right: 10px;
+}
+.birth-box select{
+    font-size: 15px;
+    text-indent:15px;
+    border: 2px solid #ddd
+}
