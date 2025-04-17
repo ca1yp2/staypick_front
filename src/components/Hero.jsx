@@ -30,7 +30,7 @@ const Hero = () => {
                             <div className="rtinfo">
                                 <Row className="namenbtn">
                                     <Col md={9}><div className="rtname">{info.name}</div></Col>
-                                    <Col md={3}><button type="submit" className="resbtn btn btn-primary">예약하기</button></Col>
+                                    <Col md={3}><button className="resbtn btn"><Link to={"/payment"}>예약하기</Link></button></Col>
                                 </Row>
                                 <div className="rtinnerbox">
                                     <div className="timeninfo">
