@@ -1,0 +1,67 @@
+/* Board.css */
+
+/* 전체 게시판 컨테이너 스타일 */
+.board {
+    margin: 20px auto;
+    max-width: 800px; /* 컨텐츠 최대 너비 지정 */
+    padding: 20px;
+    background-color: #f9f9f9; /* 연한 회색 배경 */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
+  }
+  
+  /* 게시판 제목 스타일 */
+  .board h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+
+  /* 버튼 자체 스타일 */
+  .write-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #339cff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 672px;
+    margin-bottom: 20px;
+  }
+  
+  .write-button:hover {
+    background-color: #2287e6;
+  }
+  /* 게시글 목록 테이블 기본 스타일 */
+  .board-table {
+    width: 100%;
+    border-collapse: collapse; /* 테이블 경계선 합치기 */
+  }
+  
+  /* 테이블 헤더 스타일 */
+  .board-table th {
+    background-color: #339cff;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  /* 테이블 데이터 셀 스타일 */
+  .board-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* 행 구분선 */
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  /* 테이블 행 hover 효과 */
+  .board-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
