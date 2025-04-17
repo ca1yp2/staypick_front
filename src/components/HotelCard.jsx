@@ -10,7 +10,7 @@ const HotelCard = ({ hotel }) => {
   return (
     <div className="hotel-card">
       <div className="hotel-image">
-        <img src={`/images/${hotel.id}.jpg`} alt={hotel.name} />
+      <img src={`/images/hotel-images/${hotel.image}`} alt={hotel.name} />
       </div>
 
       <div className="hotel-info">
