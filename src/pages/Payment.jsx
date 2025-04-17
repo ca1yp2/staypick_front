@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useLocation } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap'
+import axios from 'axios';
 import { RiInformationLine } from "react-icons/ri";
 import '../css/payment.css'
 
 const Payment = () => {
+  const location = useLocation();
+  const saveLocation = location.state;
   return (
     <div className="gray-bg">
       <Container>
@@ -13,7 +17,7 @@ const Payment = () => {
           </div>
           <div className="text-wrapper-3">숙소</div>
           <div className="rectangle-2">
-            <p>경주 리한셀렉트 디럭스 트윈 호수 전망(세미싱글 2개) 숙박/1박<RiInformationLine /></p>
+            <p>경주 리한셀렉트 {saveLocation.name} 숙박/1박<RiInformationLine /></p>
           </div>
           <div className="text-wrapper-3">시간</div>
           <Row className="timebox">
