@@ -8,6 +8,8 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 24px;
+  max-width: 1320px;     /*  헤더와 너비 맞춤 */
+  margin: 0 auto;  
 }
 
 /* 필터의 각 줄 */

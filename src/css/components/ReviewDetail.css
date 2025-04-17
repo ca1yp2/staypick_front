@@ -1,0 +1,119 @@
+/* ReviewDetail.css */
+
+.review-detail-container {
+    font-family: 'Pretendard', sans-serif;
+    background-color: #fafafa;
+    min-height: 100vh;
+  }
+  
+  .review-header {
+    background-color: #ffffff;
+    padding: 16px 0;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .review-header-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
+  .review-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .review-main {
+    max-width: 1080px;
+    margin: 32px auto;
+    padding: 0 16px;
+  }
+  
+  .review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .review-title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .review-meta {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .review-filter {
+    margin-bottom: 20px;
+    text-align: right;
+  }
+  
+  .review-filter select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .review-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .review-box {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .review-stars {
+    margin-bottom: 6px;
+  }
+  
+  .star-icon {
+    color: #fbbc04;
+    font-size: 16px;
+    margin-right: 2px;
+  }
+  
+  .review-date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  
+  .review-text {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .back-link {
+    margin-top: 40px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: #007bff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  
+  .back-link:hover {
+    color: #0056b3;
+  }
+  
+  .arrow-icon {
+    margin-right: 6px;
+    font-size: 16px;
+  }
+  
