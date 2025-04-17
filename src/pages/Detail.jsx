@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { RiArrowRightSLine, RiStarFill, RiMapPin2Fill, RiSendPlaneFill } from "react-icons/ri";
+import {  RiArrowRightSLine, RiStarFill, RiMapPin2Fill, RiSendPlaneFill } from "react-icons/ri";
 import '../css/detail.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Hero from '../components/Hero';
@@ -16,7 +16,7 @@ const Detail = () => {
           <div className="acc-tag">#인기있는 숙소 #후기 좋은 숙소</div>
           <div className="pricetag">165,000원~</div>
           <div className="review-table">
-            <div className="text-wrapper-5">후기 <RiArrowRightSLine /></div>
+            <div className="text-wrapper-5"><a href="">후기 <RiArrowRightSLine /></a></div>
             <Row className='ml'>
               <Col md={9}><div className="reviewbox">
                 <div className="grade"><RiStarFill className='yellow' /> 4.8</div>
@@ -39,7 +39,7 @@ const Detail = () => {
             </Row>
           </div>
           <div className="location-table">
-            <div className="location-main"><a href="#">위치 정보 <RiArrowRightSLine /></a></div>
+            <div className="location-main">위치 정보</div>
             <div className="location-sub1"><RiMapPin2Fill /> 경북 경주시 신평동 370 <a href="#">지도보기</a></div>
             <div className="location-sub2"><RiSendPlaneFill /> 보문관광단지 부근</div>
           </div>
