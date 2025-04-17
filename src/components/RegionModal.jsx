@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import regions from '../data/regions.json';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../css/components/RegionModal.css';
 
 const RegionModal = ({ onSelect, onClose }) => {
   const [selectedRegion, setSelectedRegion] = useState('서울');
+  const [regions, setRegions] = useState({});
+
+  // 지역 데이터 비동기 로딩
+  useEffect(() => {
+    axios.get('/data/regions.json')
+      .then((res) => setRegions(res.data))
+      .catch((err) => console.error("지역 데이터 로딩 실패", err));
+  }, []);
 
   return (
     <div className="region-modal-overlay">
@@ -40,7 +48,7 @@ const RegionModal = ({ onSelect, onClose }) => {
             </div>
 
             <ul>
-              {regions[selectedRegion].map((item, idx) => (
+              {regions[selectedRegion]?.map((item, idx) => (
                 <li key={idx}>
                   <span>{item}</span>
                   <button onClick={() => onSelect(`${selectedRegion} ${item}`)}>선택</button>

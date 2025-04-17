@@ -5,7 +5,7 @@
     "location": "경주 보문단지",
     "category": "호텔",
     "price": 246495,
-    "image": "/images/1.jpg"
+    "image": "image1.png"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "location": "제주 서귀포",
     "category": "게스트하우스",
     "price": 152218,
-    "image": "/images/2.jpg"
+    "image": "image2.png"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "location": "서울 종로",
     "category": "호텔",
     "price": 284921,
-    "image": "/images/3.jpg"
+    "image": "image3.png"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "location": "서울 종로",
     "category": "호텔",
     "price": 282236,
-    "image": "/images/4.jpg"
+    "image": "image4.png"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "location": "부산 해운대",
     "category": "호텔",
     "price": 73264,
-    "image": "/images/5.jpg"
+    "image": "image5.png"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "location": "부산 해운대",
     "category": "호텔",
     "price": 128683,
-    "image": "/images/6.jpg"
+    "image": "image6.png"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "location": "강릉 안목항",
     "category": "호텔",
     "price": 244755,
-    "image": "/images/7.jpg"
+    "image": "image7.png"
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "location": "제주 서귀포",
     "category": "펜션",
     "price": 244554,
-    "image": "/images/8.jpg"
+    "image": "image8.png"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "location": "제주 서귀포",
     "category": "호텔",
     "price": 126029,
-    "image": "/images/9.jpg"
+    "image": "image9.png"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "location": "강릉 안목항",
     "category": "게스트하우스",
     "price": 235340,
-    "image": "/images/10.jpg"
+    "image": "image10.png"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "location": "서울 강남",
     "category": "호텔",
     "price": 240742,
-    "image": "/images/11.jpg"
+    "image": "image11.png"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "location": "제주 서귀포",
     "category": "펜션",
     "price": 197288,
-    "image": "/images/12.jpg"
+    "image": "image12.png"
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@
     "location": "서울 종로",
     "category": "호텔",
     "price": 289232,
-    "image": "/images/13.jpg"
+    "image": "image13.png"
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@
     "location": "인천 송도",
     "category": "호텔",
     "price": 99498,
-    "image": "/images/14.jpg"
+    "image": "image14.png"
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@
     "location": "강릉 안목항",
     "category": "펜션",
     "price": 87416,
-    "image": "/images/15.jpg"
+    "image": "image15.png"
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@
     "location": "부산 해운대",
     "category": "펜션",
     "price": 136553,
-    "image": "/images/16.jpg"
+    "image": "image16.png"
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@
     "location": "서울 강남",
     "category": "게스트하우스",
     "price": 191104,
-    "image": "/images/17.jpg"
+    "image": "image17.png"
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@
     "location": "경주 보문단지",
     "category": "호텔",
     "price": 293348,
-    "image": "/images/18.jpg"
+    "image": "image18.png"
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@
     "location": "서울 강남",
     "category": "호텔",
     "price": 208954,
-    "image": "/images/19.jpg"
+    "image": "image19.png"
   },
   {
     "id": 20,
@@ -157,6 +157,6 @@
     "location": "부산 해운대",
     "category": "호텔",
     "price": 78451,
-    "image": "/images/20.jpg"
+    "image": "image20.png"
   }
 ]

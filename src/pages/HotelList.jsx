@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import hotelData from '../data/hotels.json';
+// import hotelData from '../data/hotels.json'; ❌ import 방식 제거
+import axios from 'axios';
 import FilterBar from '../components/FilterBar';
 import HotelCard from '../components/HotelCard';
 import '../css/HotelList.css';
@@ -19,8 +20,12 @@ const HotelList = () => {
 
   // 호텔 데이터 로딩
   useEffect(() => {
-    setHotels(hotelData);
-    setFilteredHotels(hotelData); // 전체 데이터 보유
+    axios.get('/data/hotels.json') // ✅ public 경로에서 데이터 비동기로 불러오기
+      .then((res) => {
+        setHotels(res.data);
+        setFilteredHotels(res.data); // 전체 데이터 보유
+      })
+      .catch((err) => console.error('호텔 데이터 로딩 실패', err));
   }, []);
 
   // 검색 실행

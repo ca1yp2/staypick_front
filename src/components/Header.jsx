@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../assets/images/logo.png';
 import '../css/components/Header.css';
 
 const Header = () => {
@@ -8,7 +7,7 @@ const Header = () => {
       <div className="header-inner">
         <div className="left">
           <a href="/">
-            <img src={logo} alt="STAYPICK" className="header-logo" />
+            <img src="/imgs/home-images/logo.png" alt="STAYPICK" className="header-logo" />
           </a>
         </div>
         <nav className="center">
