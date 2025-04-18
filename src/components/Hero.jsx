@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,6 +12,7 @@ import { RiArrowLeftWideFill, RiArrowRightWideFill } from 'react-icons/ri';
 
 const Hero = () => {
   const [infos, setInfos] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -18,6 +20,19 @@ const Hero = () => {
       .then((res) => setInfos(res.data))
       .catch((err) => console.log('데이터 로딩 실패', err));
   }, []);
+
+  const reservation = (info) => {
+    navigate("/payment", {
+        state: {
+            name: info.name,
+            personnel: info.personnel,
+            checkin: info.checkin,
+            checkout: info.checkout,
+            discountprice: info.discountprice,
+            regularprice: info.regularprice,
+        }
+    });
+  }
 
   return (
     <div className="rtbox">
@@ -57,12 +72,12 @@ const Hero = () => {
                             <div className="rtname">{info.name}</div>
                           </Col>
                           <Col md={3}>
-                            <button
-                              type="submit"
-                              className="resbtn btn btn-primary"
-                            >
-                              예약하기
-                            </button>
+                                <button 
+                                    className="resbtn btn"
+                                    onClick={()=>reservation(info)}
+                                >
+                                    예약하기
+                                </button>
                           </Col>
                         </Row>
                         <div className="rtinnerbox">
@@ -82,8 +97,8 @@ const Hero = () => {
                                 </Col>
                                 <Col md={10}>
                                   <div className="times">
-                                    <div className="subinfo">{info.checkin}</div>
-                                    <div className="subinfo">{info.checkout}</div>
+                                    <div className="subinfo">입실 {info.checkin}</div>
+                                    <div className="subinfo">퇴실 {info.checkout}</div>
                                   </div>
                                 </Col>
                               </Row>
@@ -101,8 +116,8 @@ const Hero = () => {
                                 </Col>
                                 <Col md={10}>
                                   <div className="subinfo">
-                                    {info.discountprice}
-                                    <del>({info.regularprice})</del>
+                                    {Number(info.discountprice).toLocaleString()}원
+                                    <del>({Number(info.regularprice).toLocaleString()}원)</del>
                                   </div>
                                 </Col>
                               </Row>
