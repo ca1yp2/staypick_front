@@ -4,7 +4,7 @@ import RegionModal from './RegionModal';
 import DateRangePicker from './DateRangePicker';
 import '../css/components/FilterBar.css';
 
-const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch }) => {
+const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch, onSortChange }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState('');
   const [checkInDate, setCheckInDate] = useState(null);
@@ -37,6 +37,10 @@ const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch })
 
   const handleSearch = () => {
     onSearch && onSearch();
+  };
+
+  const handleSortClick = () => {
+    onSortChange && onSortChange('price-asc'); // 정렬 기준을 문자열로 넘김
   };
 
   return (
@@ -75,7 +79,7 @@ const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch })
         </div>
 
         <div className="right-options">
-          <div className="sort-filter">
+        <div className="sort-filter" onClick={handleSortClick} style={{ cursor: 'pointer' }}>
             <RiFilter3Line /> 가격낮은 순
           </div>
         </div>

@@ -4,10 +4,12 @@ import {
   RiHotelLine,
   RiMoneyDollarCircleLine,
 } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 import '../css/components/HotelCard.css';
 import ReviewSlider from './ReviewSlider';
 
 const HotelCard = ({ hotel }) => {
+  const navigate = useNavigate();
   return (
     <div className="hotel-card">
       <div className="hotel-card-inner">

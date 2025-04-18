@@ -1,0 +1,25 @@
+/* MyPage.css */
+.mypage-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  .mypage-sidebar {
+    width: 200px;
+  }
+  .mypage-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  .mypage-sidebar li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  .mypage-sidebar li.active {
+    font-weight: bold;
+    color: #0066cc;
+  }
+  .mypage-content {
+    flex: 1;
+  }
+  

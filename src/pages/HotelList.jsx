@@ -70,6 +70,13 @@ const HotelList = () => {
     setHasSearched(true);
   };
 
+  const handleSortChange = (sortType) => {
+    if (sortType === 'price-asc') {
+      const sorted = [...filteredHotels].sort((a, b) => a.price - b.price);
+      setFilteredHotels(sorted);
+    }
+  };
+  
   return (
     <div className="hotel-list-page">
       <FilterBar
@@ -80,6 +87,7 @@ const HotelList = () => {
         }}
         onCategoryChange={setSelectedCategory}
         onSearch={handleSearch}
+        onSortChange={handleSortChange}
       />
 
       {/*검색 전에는 아무 것도 안 보이게 */}
