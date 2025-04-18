@@ -240,7 +240,11 @@
 }
 .namenbtn button:hover{
   color: #fff !important;
-  background-color: #1282d3;
+  background-color: #1282d3 !important;
+}
+.namenbtn button:active{
+  color: #fff !important;
+  background-color: #1282d3 !important;
 }
 .rtname {
   font-weight: 700;

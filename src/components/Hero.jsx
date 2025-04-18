@@ -24,7 +24,12 @@ const Hero = () => {
   const reservation = (info) => {
     navigate("/payment", {
         state: {
-            name: info.name
+            name: info.name,
+            personnel: info.personnel,
+            checkin: info.checkin,
+            checkout: info.checkout,
+            discountprice: info.discountprice,
+            regularprice: info.regularprice,
         }
     });
   }
@@ -92,8 +97,8 @@ const Hero = () => {
                                 </Col>
                                 <Col md={10}>
                                   <div className="times">
-                                    <div className="subinfo">{info.checkin}</div>
-                                    <div className="subinfo">{info.checkout}</div>
+                                    <div className="subinfo">입실 {info.checkin}</div>
+                                    <div className="subinfo">퇴실 {info.checkout}</div>
                                   </div>
                                 </Col>
                               </Row>
@@ -111,8 +116,8 @@ const Hero = () => {
                                 </Col>
                                 <Col md={10}>
                                   <div className="subinfo">
-                                    {info.discountprice}
-                                    <del>({info.regularprice})</del>
+                                    {Number(info.discountprice).toLocaleString()}원
+                                    <del>({Number(info.regularprice).toLocaleString()}원)</del>
                                   </div>
                                 </Col>
                               </Row>
