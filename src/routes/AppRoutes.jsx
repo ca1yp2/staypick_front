@@ -9,6 +9,7 @@ import Login from '../pages/Login'
 import Register from '../pages/Register'
 import MyPage from '../pages/MyPage'
 import Board from '../pages/Board' // ✅ Board 컴포넌트 추가
+import ReviewDetail from '../components/ReviewDetail'
 
 const AppRoutes = () => (
   <Routes>
@@ -22,6 +23,7 @@ const AppRoutes = () => (
         <Route path='/register' element={<Register />} />
         <Route path='/mypage' element={<MyPage />} />
         <Route path='/board' element={<Board />} /> {/* ✅ 게시판 경로 추가 */}
+        <Route path='/reviewdetail/:id' element={<ReviewDetail />} />
       </Route>
   </Routes>
 );
