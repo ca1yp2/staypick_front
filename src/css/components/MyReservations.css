@@ -1,0 +1,49 @@
+/* MyReservations.css */
+
+.reservation-list {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .reservation-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .reservation-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  
+  .reservation-info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .reservation-info p {
+    margin: 0.2rem 0;
+    font-size: 0.95rem;
+    color: #444;
+  }
+  
+  .reservation-info p strong {
+    color: #111;
+  }
+  
