@@ -3,6 +3,7 @@
       "id": 101,
       "userId": 1,
       "hotelId": 201,
+      "roomId": 1,
       "checkIn": "2025-05-01",
       "checkOut": "2025-05-03",
       "status": "confirmed"
@@ -11,6 +12,7 @@
       "id": 102,
       "userId": 2,
       "hotelId": 202,
+      "roomId": 2,
       "checkIn": "2025-05-10",
       "checkOut": "2025-05-11",
       "status": "cancelled"
@@ -19,6 +21,7 @@
       "id": 103,
       "userId": 1,
       "hotelId": 203,
+      "roomId": 3,
       "checkIn": "2025-06-15",
       "checkOut": "2025-06-18",
       "status": "confirmed"
