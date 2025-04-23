@@ -1,26 +1,26 @@
 [
     {
-      "id": 101,
+      "id": 1,
       "userId": 1,
-      "hotelId": 201,
+      "hotelId": 1,
       "roomId": 1,
       "checkIn": "2025-05-01",
       "checkOut": "2025-05-03",
       "status": "confirmed"
     },
     {
-      "id": 102,
-      "userId": 2,
-      "hotelId": 202,
+      "id": 2,
+      "userId": 1,
+      "hotelId": 2,
       "roomId": 2,
       "checkIn": "2025-05-10",
       "checkOut": "2025-05-11",
       "status": "cancelled"
     },
     {
-      "id": 103,
+      "id": 3,
       "userId": 1,
-      "hotelId": 203,
+      "hotelId": 3,
       "roomId": 3,
       "checkIn": "2025-06-15",
       "checkOut": "2025-06-18",
