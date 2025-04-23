@@ -39,9 +39,14 @@
   margin-left: 0 !important;
 }
 .grade {
-  color: #333;
+  color: #666;
   font-size: 17px;
-  font-weight: 700;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.grade span{
+  margin-left: 5px;
 }
 .grade svg {
   color: rgb(247, 193, 15);

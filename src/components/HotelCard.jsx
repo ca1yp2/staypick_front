@@ -10,6 +10,14 @@ import ReviewSlider from './ReviewSlider';
 
 const HotelCard = ({ hotel }) => {
   const navigate = useNavigate();
+
+  const hotelinfo = (hotel) => {
+    navigate("/detail",{
+      state: {
+        id: hotel.id
+      }
+    })
+  }
   return (
     <div className="hotel-card">
       <div className="hotel-card-inner">
@@ -32,7 +40,7 @@ const HotelCard = ({ hotel }) => {
             <div className="hotel-price">
               <RiMoneyDollarCircleLine /> ₩{hotel.price.toLocaleString()} / 1박
             </div>
-            <button className="reserve-btn">예약하기</button>
+            <button className="reserve-btn" onClick={()=>hotelinfo(hotel)}>예약하기</button>
           </div>
         </div>
       </div>
