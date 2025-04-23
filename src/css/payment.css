@@ -182,7 +182,6 @@
   font-size: 20px;
 }
 .sameinfo input[type="checkbox"]{
-  zoom: 1.6;
   padding-top: 10px;
   cursor: pointer;
 }
@@ -194,7 +193,6 @@
   margin-right: 120px;
   margin-top: 18px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #ccc;
 }
 .text-wrapper-34 {
   font-weight: 400;
@@ -317,4 +315,7 @@
 .text-wrapper-3 span{
   float: right;
   padding-right: 140px;
+}
+.modal-body{
+  flex-direction: column;
 }

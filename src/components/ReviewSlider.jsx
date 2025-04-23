@@ -10,6 +10,12 @@ import '../css/components/ReviewSlider.css';
 const ReviewSlider = ({ reviews = [], hotelId }) => {
   const navigate = useNavigate();
 
+  const goToDetail = () => {
+    navigate("/detail", {
+      state: hotelId
+    })
+  }
+
   return (
     <div className="review-slider">
       <div className="review-header">

@@ -5,9 +5,13 @@ import '../css/components/MyReservations.css'; // 필요 시 스타일 분리
 const MyReservations = () => {
   const [reservations, setReservations] = useState([]);
   const [hotels, setHotels] = useState([]);
-  const user = JSON.parse(localStorage.getItem('user'));
+
+  const userData = localStorage.getItem('user');
+  const user = userData ? JSON.parse(userData) : null;
 
   useEffect(() => {
+    if (!user) return;
+
     const fetchData = async () => {
       try {
         const resReservations = await axios.get('/data/reservation.json');
@@ -20,7 +24,7 @@ const MyReservations = () => {
       }
     };
     fetchData();
-  }, [user.id]);
+  }, [user]);
 
   const getHotelById = (id) => hotels.find(h => h.id === id);
 
@@ -32,6 +36,17 @@ const MyReservations = () => {
     const { text, color } = statusMap[status] || { text: '알 수 없음', color: 'gray' };
     return <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
   };
+
+  const handleCancel = (id) => {
+    const updated = reservations.map(r =>
+      r.id === id ? { ...r, status: 'cancelled' } : r
+    );
+    setReservations(updated);
+  };
+
+  if (!user) {
+    return <div className="reservation-list">⚠️ 로그인이 필요합니다.</div>;
+  }
 
   return (
     <div className="reservation-list">
@@ -52,6 +67,11 @@ const MyReservations = () => {
                 </p>
                 <p>가격: {hotel?.price.toLocaleString()}원</p>
                 <p>상태: {renderStatus(r.status)}</p>
+                {r.status !== 'cancelled' && (
+                  <button className="cancel-btn" onClick={() => handleCancel(r.id)}>
+                    예약 취소
+                  </button>
+                )}
               </div>
             </div>
           );
