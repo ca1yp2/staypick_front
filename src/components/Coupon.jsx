@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 
-const Coupon = () => {
+const Coupon = ({onCouponSelect}) => {
 
   const [coupons, setCoupons] = useState([]);
+  const [selectedCoupon, setSelectedCoupon] = useState(null);
 
   //쿠폰 할인 선택 드롭다운
   const [isUseCoupon, setIsUseCoupon] = useState(false);
@@ -11,16 +12,40 @@ const Coupon = () => {
   const [isNoCoupon, setIsNoCoupon] = useState(true);
 
   const handleCouponBox = (event) => {
-    setIsUseCoupon(event.target.checked);
-    setIsCouonDropdownOpen(event.target.checked);
-    setIsNoCoupon(!event.target.checked);
+    const checked = event.target.checked;
+    setIsUseCoupon(checked);
+    setIsCouonDropdownOpen(checked);
+    setIsNoCoupon(!checked);
+    if (!checked) {
+      setSelectedCoupon(null);
+      if (onCouponSelect) {
+        onCouponSelect(null);
+      }
+    }
   };
 
   const handleNoCouponBox = (event) => {
-    setIsNoCoupon(event.target.checked);
-    setIsUseCoupon(!event.target.checked);
-    setIsCouonDropdownOpen(!event.target.checked);
+    const checked = event.target.checked;
+    setIsNoCoupon(checked);
+    setIsUseCoupon(!checked);
+    setIsCouonDropdownOpen(!checked);
+    if (checked) {
+      setSelectedCoupon(null); 
+      if (onCouponSelect) {
+        onCouponSelect(null);
+      }
+    }
   };
+
+  const handleSelectCoupon = (coupon) => {
+    setSelectedCoupon(coupon);
+    setIsUseCoupon(true);
+    setIsCouonDropdownOpen(false);
+    setIsNoCoupon(false);
+    if(onCouponSelect){
+      onCouponSelect(coupon);
+    }
+  }
 
   useEffect(()=>{
     axios
@@ -39,6 +64,11 @@ const Coupon = () => {
       <div className="rectangle-4 py-1">
         <input type="checkbox" className="inputcheckcircle ms-3" checked={isUseCoupon} onChange={handleCouponBox} />
         <span className='ms-1'>할인 쿠폰 사용</span>
+        {selectedCoupon && (
+          <span className='text.secondary'>
+            ({selectedCoupon.name})
+          </span>
+        )}
       </div>
       <div class={`coupon-dropdown ${isCouponDropdownOpen ? 'open' : ''}`}>
         <div className="div">
@@ -50,12 +80,13 @@ const Coupon = () => {
                     <div className="text-wrapper-39">{coupon.name}</div>
                       <p className="text-wrapper-41">유효기간 {coupon.expiration} 까지</p>
                   </div>
-                  <button type="button" className="btn btn-primary">선택하기</button>
+                  <button type="button" className="btn btn-primary" onClick={() => handleSelectCoupon(coupon)}>선택하기</button>
                 </div>
               </>
             ))}
         </div>
       </div>
+      
     </>
   )
 }
