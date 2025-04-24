@@ -182,7 +182,6 @@
   font-size: 20px;
 }
 .sameinfo input[type="checkbox"]{
-  zoom: 1.6;
   padding-top: 10px;
   cursor: pointer;
 }
@@ -194,7 +193,6 @@
   margin-right: 120px;
   margin-top: 18px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #ccc;
 }
 .text-wrapper-34 {
   font-weight: 400;
@@ -245,18 +243,38 @@
   cursor: pointer;
   margin-left: 470px;
 }
+.coupon-dropdown {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease-in-out; /* 높이 변화에 0.3초의 ease-in-out 트랜지션 적용 */
+}
+
+.coupon-dropdown.open {
+  height: auto; /* 또는 원하는 고정 높이 값 */
+}
+
+/* couponbox 스타일은 그대로 유지 */
+.couponbox {
+  /* 기존 스타일 */
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
 .div {
-  position: absolute;
   width: 744px;
-  height: 191px;
-  top: 1525px;
+  height: 200px;
   margin-left: 120px;
   border-bottom: 1px solid #bbbdc0;
   border-left: 1px solid #bbbdc0;
   border-right: 1px solid #bbbdc0;
   border-radius: 19px;
-  padding: 50px 35px;
+  padding: 20px 35px;
   z-index: 1;
+  overflow-y: auto;
+}
+.couponinfo{
+  display: inline-block;
 }
 .text-wrapper-39 {
   font-weight: 700;
@@ -271,10 +289,8 @@
   font-size: 14px;
   line-height: normal;
 }
-.couponbox>.btn{
-  position: absolute;
-  top: 8px;
-  right: 0;
+.couponbox button{
+  float: right;
 }
 .text-wrapper-6 {
   font-weight: 700;
@@ -282,7 +298,7 @@
   font-size: 29px;
   line-height: 50px;
   padding-left: 120px;
-  padding-top: 200px;
+  margin-top: 30px;
   padding-bottom: 10px;
 }
 .text-wrapper-28 {
@@ -299,4 +315,7 @@
 .text-wrapper-3 span{
   float: right;
   padding-right: 140px;
+}
+.modal-body{
+  flex-direction: column;
 }

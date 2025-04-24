@@ -1,65 +1,69 @@
+
 .hotel-card {
-  display: flex;
-  flex-direction: row;
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin: 24px auto;
+  background-color: #fff;
+  font-family: 'Pretendard', sans-serif;
+  max-width: 1320px;
+}
+
+.hotel-card-inner {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
 }
 
 .hotel-image img {
   width: 220px;
   height: 160px;
   object-fit: cover;
-  border-right: 1px solid #f0f0f0;
+  border-radius: 12px;
 }
 
 .hotel-info {
-  padding: 16px;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.hotel-name {
+.info-top .hotel-name {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .hotel-location,
-.hotel-category,
-.hotel-price {
-  display: flex;
-  align-items: center;
+.hotel-category {
   font-size: 14px;
   color: #555;
-  margin: 4px 0;
-  gap: 6px; /* 아이콘과 텍스트 간격 */
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+}
+
+.info-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 }
 
 .hotel-price {
-  font-weight: bold;
-  color: #222;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
 }
 
 .reserve-btn {
-  align-self: flex-start;
-  margin-top: 14px;
   padding: 8px 16px;
-  background-color: #5c3ec6;
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.reserve-btn:hover {
-  background-color: #432ca9;
+  font-weight: 500;
 }
