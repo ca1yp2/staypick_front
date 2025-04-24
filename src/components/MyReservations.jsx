@@ -22,7 +22,7 @@ const MyReservations = () => {
       try {
         const resReservations = await axios.get('/data/reservation.json');
         const resHotels = await axios.get('/data/hotels.json');
-        const resRooms = await axios.get('/data/hero.json');
+        const resRooms = await axios.get('/data/rooms.json')
 
         const myReservations = resReservations.data.filter(r => r.userId === user.id);
         setReservations(myReservations);
