@@ -8,7 +8,7 @@ import Payment from '../pages/Payment'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import MyPage from '../pages/MyPage'
-import Board from '../pages/Board' // ✅ Board 컴포넌트 추가
+import Board from '../pages/Board' 
 import ReviewDetail from '../components/ReviewDetail'
 import ReviewWrite from '../components/ReviewWrite';
 

@@ -10,23 +10,26 @@ import '../css/components/ReviewSlider.css';
 const ReviewSlider = ({ reviews = [], hotelId }) => {
   const navigate = useNavigate();
 
-  const goToDetail = () => {
-    navigate("/detail", {
-      state: hotelId
-    })
-  }
+  const calculateAverageRating = () => {
+    if (reviews.length === 0) return 0;
+    const total = reviews.reduce((sum, r) => sum + r.rating, 0);
+    return (total / reviews.length).toFixed(1);
+  };
+
+  const averageRating = calculateAverageRating();
 
   return (
-    <div className="review-slider">
-      <div className="review-header">
-        <div className="left">
-          <span className="rating-label">
-            <RiStarFill className="star-icon" />
-            4.7 <small>({reviews.length})</small> 숙소리뷰
-          </span>
+    <div className="review-slider-box">
+      <div className="review-slider-header">
+        <div className="review-slider-header-left">
+          <RiStarFill className="review-slider-star filled" />
+          {averageRating} ({reviews.length}) 숙소리뷰
         </div>
-        <div className="right">
-          <button className="see-all-btn" onClick={() => navigate(`/reviewdetail/${hotelId}`)}>
+        <div className="review-slider-header-right">
+          <button
+            className="review-slider-seeall-btn"
+            onClick={() => navigate(`/reviewdetail/${hotelId}`)}
+          >
             전체보기 &gt;
           </button>
         </div>
@@ -34,21 +37,43 @@ const ReviewSlider = ({ reviews = [], hotelId }) => {
 
       <Swiper
         modules={[Navigation]}
-        spaceBetween={16}
+        spaceBetween={12}
         slidesPerView={3}
         navigation
-        className="review-swiper"
+        className="review-slider-swiper"
       >
         {reviews.map((review, index) => (
           <SwiperSlide key={index}>
-            <div className="review-box">
-              <div className="stars">
-                {[...Array(review.rating)].map((_, i) => (
-                  <RiStarFill key={i} className="star-icon" />
+            <div className="review-slider-card">
+              
+             
+              
+              {/* 별점 */}
+              <div className="review-slider-stars">
+                {[...Array(5)].map((_, i) => (
+                  <RiStarFill
+                    key={i}
+                    className={`review-slider-star ${i < review.rating ? 'filled' : ''}`}
+                  />
                 ))}
               </div>
-              <div className="review-date">{review.date}</div>
-              <div className="review-text">{review.text}</div>
+              
+              
+
+              {/* 작성일 */}
+              <div className="review-slider-date">{review.date}</div>
+
+              {/* 내용 */}
+              <div className="review-slider-text">{review.content}</div>
+
+               {/* 이미지 추가 부분 */}
+               {review.img && (
+                <img
+                  src={`/imgs/review-images/${review.img}`}
+                  alt="리뷰 이미지"
+                  className="review-slider-image"
+                />
+              )}
             </div>
           </SwiperSlide>
         ))}

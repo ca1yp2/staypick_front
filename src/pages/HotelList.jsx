@@ -23,17 +23,20 @@ const HotelList = () => {
           axios.get('/data/hotels.json'),
           axios.get('/data/reviews.json')
         ]);
-        console.log('📦 reviewRes.data:', reviewRes.data);
+    
         const reviewMap = new Map();
         reviewRes.data.forEach(item => {
-          reviewMap.set(item.hotelId, item.reviews);
+          if (!reviewMap.has(item.hotelId)) {
+            reviewMap.set(item.hotelId, []);
+          }
+          reviewMap.get(item.hotelId).push(item);
         });
-
+    
         const hotelsWithReviews = hotelRes.data.map(hotel => ({
           ...hotel,
           reviews: reviewMap.get(hotel.id) || []
         }));
-
+    
         setHotels(hotelsWithReviews);
         setFilteredHotels(hotelsWithReviews);
       } catch (err) {
