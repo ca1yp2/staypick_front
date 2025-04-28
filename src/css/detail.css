@@ -146,8 +146,10 @@
   line-height: 30px;
   white-space: nowrap;
 }
-.location-sub1 a {
+.location-sub1 span {
   color: #1f94ea;
+  cursor: pointer;
+  margin-left: 5px;
 }
 .location-table .location-sub2 {
   color: #333;

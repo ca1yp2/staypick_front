@@ -14,12 +14,12 @@ import ReviewWrite from '../components/ReviewWrite';
 
 const AppRoutes = () => (
   <Routes>
+     <Route path='/payment' element={<Payment />} />
      <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/detail" element={<Detail />} />
         <Route path='/hotellist' element={<HotelList />} />
         <Route path='/locationcheck' element={<LocationCheck />} />
-        <Route path='/payment' element={<Payment />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/mypage' element={<MyPage />} />

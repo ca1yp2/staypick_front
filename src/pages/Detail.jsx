@@ -5,6 +5,7 @@ import {  RiArrowRightSLine, RiStarFill, RiMapPin2Fill, RiSendPlaneFill } from "
 import '../css/detail.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Room from '../components/Room';
+import MapModal from '../components/MapModal';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Navigation, Pagination } from 'swiper/modules';
@@ -22,6 +23,18 @@ const Detail = () => {
   const [error, setError] = useState(null);
   const [roomInfos, setroomInfos] = useState([]);
   const [services, setServices] = useState([]);
+  const [isMapModalVisible, setIsMapModalVisible] = useState(false);
+  const [modalLocation, setModalLocation] =useState('');
+
+  const handleShowMapModal = (location) => {
+    setModalLocation(location);
+    setIsMapModalVisible(true);
+  };
+
+  const handleCloseMapModal = () => {
+    setIsMapModalVisible(false);
+    setModalLocation('');
+  }
 
   useEffect(() => {
     //Room 데이터 불러오기
@@ -114,7 +127,7 @@ const Detail = () => {
               >
                 {hotel.reviews.map((review, index) => (
                   <SwiperSlide key={index}>
-                    <Row className='ml'>
+                    <Row className='ml' key={review.id || index}>
                       <Col md={9}><div className="reviewbox">
                         <div className="grade"> {[...Array(Math.round(review.rating))].map((_, i) => (
                             <RiStarFill key={i} className='yellow' />
@@ -136,16 +149,16 @@ const Detail = () => {
           </div>
           <div className="service-table">
             <div className="service-main">서비스 및 부대시설</div>
-            <Row className='ml'>
+            <Row className='ml' key="servies-row">
               {services.map((service, index) => (
-                <Col md={4}><span><img src={`imgs/detail/${service.image}`} alt={service.name} />{service.name}</span></Col>
+                <Col md={4} key={service.id || index}><span><img src={`imgs/detail/${service.image}`} alt={service.name} />{service.name}</span></Col>
               ))}
             </Row>
           </div>
           <div className="location-table">
             <div className="location-main">위치 정보</div>
-            <div className="location-sub1"><RiMapPin2Fill /> 경북 경주시 신평동 370 <a href="#">지도보기</a></div>
-            <div className="location-sub2"><RiSendPlaneFill /> 보문관광단지 부근</div>
+            <div className="location-sub1"><RiMapPin2Fill /> {hotel.detaillocation} <span onClick={handleShowMapModal}>지도보기</span></div>
+            <div className="location-sub2"><RiSendPlaneFill /> {hotel.detaillocation.split(' ')[0]}</div>
           </div>
         </Col>
         <Col md={7} className='mt-10'>
@@ -165,6 +178,7 @@ const Detail = () => {
           <Room infos={roomInfos} hotel={hotel} />
         </Col>
       </Row>
+      <MapModal show={isMapModalVisible} onHide={handleCloseMapModal} address={modalLocation} />
     </Container>
   )
 }
