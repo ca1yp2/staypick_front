@@ -157,7 +157,7 @@ const Detail = () => {
           </div>
           <div className="location-table">
             <div className="location-main">위치 정보</div>
-            <div className="location-sub1"><RiMapPin2Fill /> {hotel.detaillocation} <span onClick={handleShowMapModal}>지도보기</span></div>
+            <div className="location-sub1"><RiMapPin2Fill /> {hotel.detaillocation} <span onClick={() => handleShowMapModal(hotel.detaillocation)}>지도보기</span></div>
             <div className="location-sub2"><RiSendPlaneFill /> {hotel.detaillocation.split(' ')[0]}</div>
           </div>
         </Col>

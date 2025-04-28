@@ -5,18 +5,24 @@ const MapModal = ({ show, onHide, address }) => {
   const mapRef = useRef(null);
   const mapInstance = useRef(null);
   const markerRef = useRef(null);
+
   const [isKakaoLoaded, setIsKakaoLoaded] = useState(false);
   const [isKakaoLoadingError, setIsKakaoLoadingError] = useState(false);
   const [geocoderLoading, setGeocoderLoading] = useState(false);
   const [geocoderError, setGeocoderError] = useState(null);
+
   const [mapCenter, setMapCenter] = useState({ lat: 37.5665, lng: 126.9780 });
   const [markerPosition, setMarkerPosition] = useState(null);
 
   const kakaoApiKey = import.meta.env.VITE_KAKAO_KEY;
 
   const handleLoadKakao = useCallback(() => {
-    setIsKakaoLoaded(true);
-    console.log('Kakao Maps API 로드 완료 (handleLoadKakao)');
+    if (window.kakao && window.kakao.maps) {
+      window.kakao.maps.load(() => {
+        setIsKakaoLoaded(true);
+        console.log('Kakao Maps API 로드 완료 (handleLoadKakao)');
+      });
+    }
   }, []);
 
   const handleLoadError = useCallback(() => {
@@ -40,18 +46,21 @@ const MapModal = ({ show, onHide, address }) => {
   }, [show, isKakaoLoaded, isKakaoLoadingError, kakaoApiKey, handleLoadKakao, handleLoadError]);
 
   useEffect(() => {
-    if (show && address && isKakaoLoaded && window.kakao && window.kakao.maps && window.kakao.maps.services) {
+    if (show && address && isKakaoLoaded && window.kakao && window.kakao.maps.services) {
       setGeocoderLoading(true);
+
       const geocoder = new window.kakao.maps.services.Geocoder();
       geocoder.addressSearch(address, (result, status) => {
         if (status === window.kakao.maps.services.Status.OK && result.length > 0) {
           const { y, x } = result[0];
           const coords = new window.kakao.maps.LatLng(y, x);
+
           setMapCenter({ lat: parseFloat(y), lng: parseFloat(x) });
           setMarkerPosition({ lat: parseFloat(y), lng: parseFloat(x) });
 
           if (mapInstance.current) {
             mapInstance.current.panTo(coords);
+
             if (markerRef.current) {
               markerRef.current.setMap(null);
             }
@@ -89,7 +98,7 @@ const MapModal = ({ show, onHide, address }) => {
       };
       mapInstance.current = new window.kakao.maps.Map(mapRef.current, options);
     }
-  }, [show, isKakaoLoaded, mapRef, mapCenter]);
+  }, [show, isKakaoLoaded, mapCenter]);
 
   return (
     <Modal show={show} onHide={onHide} size="lg">
