@@ -1,9 +1,10 @@
 .mypage-container {
   display: flex;
-  max-width: 1200px;
+  align-items: flex-start;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 20px;
-  gap: 40px;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .mypage-sidebar {
@@ -32,4 +33,14 @@
 
 .mypage-content {
   flex: 1;
+  padding: 0; /* 공통으로 여백 제거 */
+  box-sizing: border-box;
+}
+.mypage-container {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }

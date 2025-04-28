@@ -1,39 +1,42 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../css/components/MyReservations.css';
 import CancelModal from '../components/CancelModal';
+import { useNavigate } from 'react-router-dom';
 
 const MyReservations = () => {
   const [reservations, setReservations] = useState([]);
   const [hotels, setHotels] = useState([]);
   const [rooms, setRooms] = useState([]);
-
   const [openModal, setOpenModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const [initialLoaded, setInitialLoaded] = useState(false);
 
   const userData = localStorage.getItem('user');
   const user = userData ? JSON.parse(userData) : null;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || initialLoaded) return;
 
     const fetchData = async () => {
       try {
         const resReservations = await axios.get('/data/reservation.json');
         const resHotels = await axios.get('/data/hotels.json');
-        const resRooms = await axios.get('/data/hero.json');
+        const resRooms = await axios.get('/data/rooms.json');
 
         const myReservations = resReservations.data.filter(r => r.userId === user.id);
         setReservations(myReservations);
         setHotels(resHotels.data);
         setRooms(resRooms.data);
+        setInitialLoaded(true);
       } catch (err) {
         console.error('데이터 불러오기 실패:', err);
       }
     };
+
     fetchData();
-  }, [user]);
+  }, [user, initialLoaded]);
 
   const getHotelById = (id) => hotels.find(h => h.id === id);
   const getRoomById = (id) => rooms.find(r => r.id === id);
@@ -52,15 +55,19 @@ const MyReservations = () => {
   };
 
   const renderStatus = (status) => {
+    const normalized = status.toLowerCase().trim();
     const statusMap = {
       confirmed: { text: '예약 완료', color: 'green' },
       cancelled: { text: '예약 취소', color: 'red' }
     };
-    const { text, color } = statusMap[status] || { text: '알 수 없음', color: 'gray' };
+
+    const { text, color } = statusMap[normalized] || { text: '알 수 없음', color: 'gray' };
     return <span style={{ color, fontWeight: 'bold' }}>{text}</span>;
   };
 
-  if (!user) return <div className="reservation-list">⚠️ 로그인이 필요합니다.</div>;
+  if (!user) {
+    return <div className="reservation-list">⚠️ 로그인이 필요합니다.</div>;
+  }
 
   return (
     <div className="reservation-list">
@@ -71,8 +78,9 @@ const MyReservations = () => {
         reservations.map((r) => {
           const hotel = getHotelById(r.hotelId);
           const room = getRoomById(r.roomId);
+
           return (
-            <div key={r.id} className="reservation-card">
+            <div key={`${r.id}-${r.status}`} className="reservation-card">
               <img
                 src={`/imgs/hotel-images/${hotel?.image || 'default.png'}`}
                 alt={hotel?.name}
@@ -86,10 +94,21 @@ const MyReservations = () => {
                 <p>체크인: <strong>{r.checkIn}</strong> / 체크아웃: <strong>{r.checkOut}</strong></p>
                 <p>가격: {hotel?.price?.toLocaleString()}원</p>
                 <p>상태: {renderStatus(r.status)}</p>
+
                 {r.status === 'confirmed' && (
                   <div className="button-group">
-                    <button className="review-btn" onClick={() => alert('리뷰 작성 페이지로 이동')}>리뷰 쓰기</button>
-                    <button className="cancel-btn" onClick={() => handleCancelClick(r.id)}>예약 취소</button>
+                    <button
+                      className="review-btn"
+                      onClick={() => navigate(`/review/write/${r.id}`)}
+                    >
+                      리뷰 쓰기
+                    </button>
+                    <button
+                      className="cancel-btn"
+                      onClick={() => handleCancelClick(r.id)}
+                    >
+                      예약 취소
+                    </button>
                   </div>
                 )}
               </div>
@@ -97,7 +116,12 @@ const MyReservations = () => {
           );
         })
       )}
-      <CancelModal open={openModal} onClose={() => setOpenModal(false)} onConfirm={confirmCancel} />
+
+      <CancelModal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        onConfirm={confirmCancel}
+      />
     </div>
   );
 };

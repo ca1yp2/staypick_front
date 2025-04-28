@@ -12,16 +12,17 @@ const HotelCard = ({ hotel }) => {
   const navigate = useNavigate();
 
   const hotelinfo = (hotel) => {
-    navigate("/detail",{
+    navigate("/detail", {
       state: {
         id: hotel.id
       }
-    })
-  }
+    });
+  };
+
   return (
     <div className="hotel-card">
       <div className="hotel-card-inner">
-        <div className="hotel-image">
+        <div className="hotel-card-image">
           <img src={`/imgs/hotel-images/${hotel.image}`} alt={hotel.name} />
         </div>
 
@@ -40,13 +41,16 @@ const HotelCard = ({ hotel }) => {
             <div className="hotel-price">
               <RiMoneyDollarCircleLine /> ₩{hotel.price.toLocaleString()} / 1박
             </div>
-            <button className="reserve-btn" onClick={()=>hotelinfo(hotel)}>예약하기</button>
+            <button className="reserve-btn" onClick={() => hotelinfo(hotel)}>
+              예약하기
+            </button>
           </div>
         </div>
       </div>
 
+     
       {hotel.reviews && hotel.reviews.length > 0 && (
-        <div className="review-container">
+        <div className="review-slider-wrapper">
           <ReviewSlider reviews={hotel.reviews} hotelId={hotel.id} />
         </div>
       )}

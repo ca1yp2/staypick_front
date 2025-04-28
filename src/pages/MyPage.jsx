@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import MySidebar from '../components/MySidebar';
 import MyReservations from '../components/MyReservations';
-// import MyInfo from '../components/mypage/MyInfo';
-// import MyReviews from '../components/mypage/MyReviews';
+import MyInfo from '../components/MyInfo';
+import MyReviews from '../components/MyReviews';
 import '../css/MyPage.css';
 
 const MyPage = () => {
@@ -12,8 +12,8 @@ const MyPage = () => {
     switch (selectedMenu) {
       case 'reservations':
         return <MyReservations />;
-      // case 'info': return <MyInfo />;
-      // case 'reviews': return <MyReviews />;
+     case 'info': return <MyInfo />;
+      case 'reviews': return <MyReviews />;
       default:
         return <div>콘텐츠를 선택해주세요</div>;
     }

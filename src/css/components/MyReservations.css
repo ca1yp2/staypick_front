@@ -1,5 +1,9 @@
 .reservation-list {
   width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+  box-sizing: border-box;
 }
 
 .reservation-list h2 {
