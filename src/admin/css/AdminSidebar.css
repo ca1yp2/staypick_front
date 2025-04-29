@@ -1,0 +1,51 @@
+.admin-sidebar {
+    width: 220px;
+    background-color: #f7f9fa;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    height: 100vh;
+  }
+  
+  .admin-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .admin-menu-section {
+    margin-bottom: 30px;
+  }
+  
+  .menu-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .admin-menu {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+  }
+  
+  .admin-menu:hover,
+  .admin-menu.active {
+    font-weight: bold;
+    color: #0066cc;
+  }
+  .admin-sidebar-top {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .current-time {
+    margin-bottom: 5px;
+  }
+  
+  .accommodation-name {
+    font-weight: bold;
+  }
+  
+  

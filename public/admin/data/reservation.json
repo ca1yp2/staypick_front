@@ -1,0 +1,212 @@
+[
+    {
+      "id": 1,
+      "guestName": "신사임당",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-04-30",
+      "roomName": "301룸"
+    },
+    {
+      "id": 2,
+      "guestName": "이순신",
+      "checkInDate": "2025-05-01",
+      "checkOutDate": "2025-05-04",
+      "roomName": "102객실"
+    },
+    {
+      "id": 3,
+      "guestName": "허준",
+      "checkInDate": "2025-05-04",
+      "checkOutDate": "2025-05-05",
+      "roomName": "201객실"
+    },
+    {
+      "id": 4,
+      "guestName": "장영실",
+      "checkInDate": "2025-04-30",
+      "checkOutDate": "2025-05-02",
+      "roomName": "202호"
+    },
+    {
+      "id": 5,
+      "guestName": "장영실",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-05-02",
+      "roomName": "302호"
+    },
+    {
+      "id": 6,
+      "guestName": "정약용",
+      "checkInDate": "2025-04-30",
+      "checkOutDate": "2025-05-03",
+      "roomName": "201번"
+    },
+    {
+      "id": 7,
+      "guestName": "장영실",
+      "checkInDate": "2025-05-01",
+      "checkOutDate": "2025-05-03",
+      "roomName": "402번"
+    },
+    {
+      "id": 8,
+      "guestName": "허준",
+      "checkInDate": "2025-04-30",
+      "checkOutDate": "2025-05-01",
+      "roomName": "203호"
+    },
+    {
+      "id": 9,
+      "guestName": "홍길동",
+      "checkInDate": "2025-05-01",
+      "checkOutDate": "2025-05-04",
+      "roomName": "203호"
+    },
+    {
+      "id": 10,
+      "guestName": "강감찬",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-04-30",
+      "roomName": "202룸"
+    },
+    {
+      "id": 11,
+      "guestName": "정약용",
+      "checkInDate": "2025-04-30",
+      "checkOutDate": "2025-05-03",
+      "roomName": "402객실"
+    },
+    {
+      "id": 12,
+      "guestName": "정약용",
+      "checkInDate": "2025-05-02",
+      "checkOutDate": "2025-05-04",
+      "roomName": "402번"
+    },
+    {
+      "id": 13,
+      "guestName": "허준",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-04",
+      "roomName": "202호"
+    },
+    {
+      "id": 14,
+      "guestName": "이순신",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-04",
+      "roomName": "401룸"
+    },
+    {
+      "id": 15,
+      "guestName": "신사임당",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-04-30",
+      "roomName": "302호"
+    },
+    {
+      "id": 16,
+      "guestName": "홍길동",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-06",
+      "roomName": "201번"
+    },
+    {
+      "id": 17,
+      "guestName": "이순신",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-05",
+      "roomName": "302객실"
+    },
+    {
+      "id": 18,
+      "guestName": "정약용",
+      "checkInDate": "2025-05-01",
+      "checkOutDate": "2025-05-04",
+      "roomName": "101객실"
+    },
+    {
+      "id": 19,
+      "guestName": "유관순",
+      "checkInDate": "2025-04-30",
+      "checkOutDate": "2025-05-01",
+      "roomName": "301객실"
+    },
+    {
+      "id": 20,
+      "guestName": "이순신",
+      "checkInDate": "2025-05-02",
+      "checkOutDate": "2025-05-04",
+      "roomName": "201룸"
+    },
+    {
+      "id": 21,
+      "guestName": "김진재",
+      "checkInDate": "2025-05-02",
+      "checkOutDate": "2025-05-04",
+      "roomName": "201호"
+    },
+    {
+      "id": 22,
+      "guestName": "유관순",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-04",
+      "roomName": "301번"
+    },
+    {
+      "id": 23,
+      "guestName": "이순신",
+      "checkInDate": "2025-05-01",
+      "checkOutDate": "2025-05-02",
+      "roomName": "301호"
+    },
+    {
+      "id": 24,
+      "guestName": "장영실",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-05",
+      "roomName": "102호"
+    },
+    {
+      "id": 25,
+      "guestName": "유관순",
+      "checkInDate": "2025-05-03",
+      "checkOutDate": "2025-05-06",
+      "roomName": "202룸"
+    },
+    {
+      "id": 26,
+      "guestName": "김진재",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-04-30",
+      "roomName": "201룸"
+    },
+    {
+      "id": 27,
+      "guestName": "홍길동",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-05-02",
+      "roomName": "101룸"
+    },
+    {
+      "id": 28,
+      "guestName": "허준",
+      "checkInDate": "2025-05-02",
+      "checkOutDate": "2025-05-05",
+      "roomName": "101번"
+    },
+    {
+      "id": 29,
+      "guestName": "이순신",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-05-02",
+      "roomName": "202호"
+    },
+    {
+      "id": 30,
+      "guestName": "허준",
+      "checkInDate": "2025-04-29",
+      "checkOutDate": "2025-05-02",
+      "roomName": "202호"
+    }
+  ]

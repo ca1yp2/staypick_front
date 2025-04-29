@@ -18,6 +18,7 @@ const Header = () => {
         <div className="right">
           <a href="/login">로그인</a>
           <a href="/register">회원가입</a>
+          <a href="/admin/login" className="admin-login">사장님 로그인</a>
         </div>
       </div>
     </header>
