@@ -78,15 +78,6 @@ const MapModal = ({ show, onHide, address }) => {
         }
         setGeocoderLoading(false);
       });
-    } else if (!show) {
-      setMapCenter({ lat: 37.5665, lng: 126.9780 });
-      setMarkerPosition(null);
-      setGeocoderLoading(false);
-      setGeocoderError(null);
-      if (mapInstance.current) {
-        mapInstance.current.setLevel(3);
-        mapInstance.current.panTo(new window.kakao.maps.LatLng(37.5665, 126.9780));
-      }
     }
   }, [show, address, isKakaoLoaded]);
 
@@ -99,6 +90,22 @@ const MapModal = ({ show, onHide, address }) => {
       mapInstance.current = new window.kakao.maps.Map(mapRef.current, options);
     }
   }, [show, isKakaoLoaded, mapCenter]);
+
+  useEffect(() => {
+    if (!show) {
+      setIsKakaoLoaded(false);
+      setIsKakaoLoadingError(false);
+      setGeocoderLoading(false);
+      setGeocoderError(null);
+      setMarkerPosition(null);
+      setMapCenter({ lat: 37.5665, lng: 126.9780 });
+      if (mapInstance.current) {
+        mapInstance.current.setLevel(3);
+        mapInstance.current.panTo(new window.kakao.maps.LatLng(37.5665, 126.9780));
+        mapInstance.current = null; // 지도 인스턴스 정리
+      }
+    }
+  }, [show]);
 
   return (
     <Modal show={show} onHide={onHide} size="lg">

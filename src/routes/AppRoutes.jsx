@@ -11,10 +11,16 @@ import MyPage from '../pages/MyPage'
 import Board from '../pages/Board' 
 import ReviewDetail from '../components/ReviewDetail'
 import ReviewWrite from '../components/ReviewWrite';
+import { TossCheckout } from '../components/TossCheckout'
+import { TossSuccess } from '../components/TossSuccess'
+import { TossFail } from '../components/TossFail'
 
 const AppRoutes = () => (
   <Routes>
      <Route path='/payment' element={<Payment />} />
+     <Route path='/tosscheckout' element={<TossCheckout />} />
+     <Route path='/tosssuccess' element={<TossSuccess />} />
+     <Route path='/tossfail' element={<TossFail />} />
      <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/detail" element={<Detail />} />

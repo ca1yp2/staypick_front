@@ -8,9 +8,9 @@
 }
 .rectangle {
   width: 1000px;
-  height: 2295px;
   background-color: #ffffff;
   margin: 0 auto;
+  padding-bottom: 50px;
 }
 .text-wrapper-2 {
   font-weight: 700;
