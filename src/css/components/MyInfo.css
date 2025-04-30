@@ -1,22 +1,18 @@
 .reservation-list {
-    font-family: 'Pretendard', sans-serif;
-    max-width: 1080px;
-    margin: 32px auto;
-    padding: 0 16px;
+    margin: 20px;
   }
   
-  .reservation-list h2 {
+  h2 {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   
   .reservation-card {
     background: #fff;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 24px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
   }
   
   .reservation-info {
@@ -28,76 +24,53 @@
   .info-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
   }
   
   .info-row label {
     width: 100px;
-    font-weight: 600;
-    color: #333;
+    font-weight: bold;
     font-size: 14px;
   }
   
   .info-input {
     flex: 1;
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
+    padding: 8px;
+    border: 1px solid #ddd;
     border-radius: 6px;
-    background: #f9f9f9;
-  }
-  
-  .button-group {
-    margin-top: 24px;
-    text-align: right;
-  }
-  
-  .review-btn {
-    background-color: #007bff;
-    color: white;
     font-size: 14px;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    cursor: pointer;
   }
   
-  .review-btn:hover {
-    background-color: #0056b3;
+  .info-input[readonly] {
+    background-color: #f9f9f9;
+    color: #555;
   }
   
-  /* 쿠폰 관련 */
   .coupon-box {
-    flex: 1;
+    width: 100%;
   }
   
   .coupon-header {
-    cursor: pointer;
-    background: #f1f1f1;
     padding: 8px 12px;
+    background: #f1f1f1;
     border-radius: 6px;
     font-size: 14px;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
   }
   
   .coupon-list {
     margin-top: 8px;
-    padding: 0;
     list-style: none;
-    background: #fafafa;
-    border: 1px solid #ddd;
+    padding-left: 0;
+    border: 1px solid #eee;
     border-radius: 6px;
-    max-height: 150px;
-    overflow-y: auto;
+    background: #fafafa;
   }
   
   .coupon-item {
     padding: 8px 12px;
     font-size: 13px;
-    color: #555;
     border-bottom: 1px solid #eee;
   }
   
@@ -105,13 +78,22 @@
     border-bottom: none;
   }
   
-
-  .coupon-list::-webkit-scrollbar {
-    width: 6px;
+  .button-group {
+    margin-top: 20px;
+    text-align: right;
   }
   
-  .coupon-list::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 3px;
+  .review-btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .review-btn:hover {
+    background-color: #0056b3;
   }
   

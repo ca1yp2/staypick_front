@@ -6,12 +6,26 @@ const MyInfo = () => {
   const [user, setUser] = useState(null);
   const [coupons, setCoupons] = useState([]);
   const [showCoupons, setShowCoupons] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const [editedUser, setEditedUser] = useState({
+    username: '',
+    name: '',
+    phone: '',
+    email: ''
+  });
 
   useEffect(() => {
     const userData = localStorage.getItem('user');
     if (userData) {
-      setUser(JSON.parse(userData)); // 여기서 username도 같이 가져오게 됨
+      const parsedUser = JSON.parse(userData);
+      setUser(parsedUser);
+      setEditedUser({
+        username: parsedUser.username || '',
+        name: parsedUser.name || '',
+        phone: parsedUser.phone || '',
+        email: parsedUser.email || '',
+      });
     }
 
     const fetchCoupons = async () => {
@@ -26,15 +40,28 @@ const MyInfo = () => {
     fetchCoupons();
   }, []);
 
+  const handleEditClick = () => {
+    setIsEditMode(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditMode(false);
+    setUser({ ...user, ...editedUser });
+    localStorage.setItem('user', JSON.stringify({ ...user, ...editedUser }));
+    alert('수정이 완료되었습니다.');
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedUser((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   if (!user) {
     return <div className="reservation-list">⚠️ 로그인이 필요합니다.</div>;
   }
-
-  const handleSave = () => {
-    localStorage.setItem('user', JSON.stringify(user)); // 수정된 값 저장
-    alert('정보가 저장되었습니다.');
-    setIsEditing(false);
-  };
 
   return (
     <div className="reservation-list">
@@ -42,13 +69,15 @@ const MyInfo = () => {
 
       <div className="reservation-card">
         <div className="reservation-info">
+
           <div className="info-row">
             <label>아이디</label>
             <input
               type="text"
-              value={user.username || ''} // ★ username 가져오기
-              readOnly
+              value={editedUser.username}
+              name="username"
               className="info-input"
+              readOnly
             />
           </div>
 
@@ -56,10 +85,11 @@ const MyInfo = () => {
             <label>이름</label>
             <input
               type="text"
-              value={user.name || ''}
-              readOnly={!isEditing}
+              value={editedUser.name}
+              name="name"
+              onChange={handleInputChange}
               className="info-input"
-              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              readOnly={!isEditMode}
             />
           </div>
 
@@ -67,10 +97,11 @@ const MyInfo = () => {
             <label>전화번호</label>
             <input
               type="text"
-              value={user.phone || ''}
-              readOnly={!isEditing}
+              value={editedUser.phone}
+              name="phone"
+              onChange={handleInputChange}
               className="info-input"
-              onChange={(e) => setUser({ ...user, phone: e.target.value })}
+              readOnly={!isEditMode}
             />
           </div>
 
@@ -78,18 +109,27 @@ const MyInfo = () => {
             <label>이메일</label>
             <input
               type="email"
-              value={user.email || ''}
-              readOnly
+              value={editedUser.email}
+              name="email"
+              onChange={handleInputChange}
               className="info-input"
+              readOnly={!isEditMode}
             />
           </div>
 
           <div className="info-row">
             <label>보유 쿠폰</label>
-            <div className="coupon-box">
-            <div className="coupon-header" onClick={() => setShowCoupons(prev => !prev)}>
+            <div
+              className="coupon-box"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowCoupons((prev) => !prev);
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              <div className="coupon-header">
                 {coupons.length}개 {showCoupons ? '▲' : '▼'}
-                </div>
+              </div>
 
               {showCoupons && (
                 <ul className="coupon-list">
@@ -104,12 +144,12 @@ const MyInfo = () => {
           </div>
 
           <div className="button-group">
-            {!isEditing ? (
-              <button className="review-btn" onClick={() => setIsEditing(true)}>
+            {!isEditMode ? (
+              <button className="review-btn" onClick={handleEditClick}>
                 수정하기
               </button>
             ) : (
-              <button className="review-btn" onClick={handleSave}>
+              <button className="review-btn" onClick={handleSaveClick}>
                 저장하기
               </button>
             )}
