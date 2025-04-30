@@ -11,6 +11,9 @@ import MyPage from '../pages/MyPage';
 import Board from '../pages/Board';
 import ReviewDetail from '../components/ReviewDetail';
 import ReviewWrite from '../components/ReviewWrite';
+import { TossCheckout } from '../components/TossCheckout'
+ import { TossSuccess } from '../components/TossSuccess'
+ import { TossFail } from '../components/TossFail'
 import AdminLogin from '../admin/pages/AdminLogin';
 import AdminDashboard from '../admin/pages/AdminDashboard';
 import DiscountSettings from '../admin/pages/DiscountSettings';
