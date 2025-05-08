@@ -8,7 +8,7 @@ import Room from '../components/Room';
 import MapModal from '../components/MapModal';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Mousewheel, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -51,18 +51,19 @@ const Detail = () => {
           const reviewResponse = await axios.get('/data/reviews.json');
           const serviceResponse = await axios.get('/data/service.json');
 
+          console.log('reviewResponse.data:', reviewResponse.data);
+
           const hotelData = hotelResponse.data;
           const reviewData = reviewResponse.data;
           const serviceData = serviceResponse.data;
 
           const hotelId = parseInt(hotelIdFromState);
           const foundHotel = hotelData.find(h => h.id === hotelId);
-          const foundReview = reviewData.find(r => r.hotelId === hotelId);
+          const foundReviews = reviewData.filter(r => r.hotelId === hotelId);
           const foundServices = serviceData.find(s => s.hotelId === hotelId)?.services || [];
-          const reviews = foundReview ? foundReview.reviews : [];
-
+         
           if(foundHotel) {
-            sethotel({...foundHotel, reviews});
+            sethotel({...foundHotel, reviews: foundReviews});
             setServices(foundServices);
             setLoading(false);
           } else {
@@ -107,6 +108,9 @@ const Detail = () => {
     return <div>호텔 정보를 찾을 수 없습니다.</div>;
   }
 
+  console.log('hotel 객체:', hotel);
+  console.log('hotel.reviews 배열:', hotel?.reviews);
+
   return (
     <Container>
       <Row>
@@ -116,14 +120,18 @@ const Detail = () => {
           <div className="acc-tag">#인기있는 숙소 #후기 좋은 숙소</div>
           <div className="pricetag">{hotel.price.toLocaleString()}원~</div>
           <div className="review-table">
-            <div className="text-wrapper-5"><a href="">후기 <RiArrowRightSLine /></a></div>
+            <div className="text-wrapper-5"><span onClick={() => navigate(`/reviewdetail/${hotel.id}`)}>후기 <RiArrowRightSLine /></span></div>
             {hotel.reviews && hotel.reviews.length > 0 && (
               <Swiper
-                modules={[Mousewheel, Navigation, Pagination]}
+                modules={[Autoplay, Mousewheel, Navigation, Pagination]}
                 slidesPerView={1}
                 loop={hotel.reviews.length > 1}
                 mousewheel
                 pagination={{ clickable: true }}
+                autoplay={{
+                  delay: 7000,
+                  disableOnInteraction: false
+                }}
               >
                 {hotel.reviews.map((review, index) => (
                   <SwiperSlide key={index}>
@@ -133,12 +141,12 @@ const Detail = () => {
                             <RiStarFill key={i} className='yellow' />
                           ))} <span>({review.rating})</span></div>
                         <div className="review">
-                          {review.text}
+                          {review.content}
                         </div>
                       </div></Col>
-                      {review.img && (
+                      {review.img && review.img !== "" && (
                         <Col md={3}>
-                          <img className="reviewimg" src={`/imgs/detail/${review.img}`} alt="review" />
+                          <img className="reviewimg" src={`/imgs/review-images/${review.img}`} alt="review" />
                         </Col>
                       )}
                     </Row>

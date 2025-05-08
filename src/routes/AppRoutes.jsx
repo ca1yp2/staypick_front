@@ -11,6 +11,9 @@ import MyPage from '../pages/MyPage';
 import Board from '../pages/Board';
 import ReviewDetail from '../components/ReviewDetail';
 import ReviewWrite from '../components/ReviewWrite';
+import { TossCheckout } from '../components/TossCheckout'
+ import { TossSuccess } from '../components/TossSuccess'
+ import { TossFail } from '../components/TossFail'
 import AdminLogin from '../admin/pages/AdminLogin';
 import AdminDashboard from '../admin/pages/AdminDashboard';
 import DiscountSettings from '../admin/pages/DiscountSettings';
@@ -44,6 +47,9 @@ const AppRoutes = () => {
         // 유저 페이지 전용 경로
         <>
           <Route path="/payment" element={<Payment />} />
+          <Route path='/tosscheckout' element={<TossCheckout />} />
+          <Route path='/tosssuccess' element={<TossSuccess />} />
+          <Route path='/tossfail' element={<TossFail />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/detail" element={<Detail />} />

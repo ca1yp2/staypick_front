@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Coupon from '../components/Coupon';
 import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap';
 import { RiInformationLine } from 'react-icons/ri';
@@ -21,6 +21,7 @@ const formatPhoneNumber = (phoneNumber) => {
 
 const Payment = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const roomInfo = location.state?.roomInfo;
   const hotelData = location.state?.hotel;
 
@@ -40,6 +41,9 @@ const Payment = () => {
   const [couponDiscountAmount, setCouponDiscountAmount] = useState(0); // 쿠폰 할인 금액 상태
   const [finalPrice, setFinalPrice] = useState(0); // 총 결제 금액 상태
 
+  const [visit, setVisit] = useState('');
+  const [isPaymentEnabled, setIsPaymentEnabled] = useState(false);
+  
   useEffect(() => {
     setGuestPhoneFormatted(formatPhoneNumber(guestPhone));
   }, [guestPhone]);
@@ -48,6 +52,13 @@ const Payment = () => {
     // 선택된 쿠폰 또는 룸 정보가 변경될 때마다 최종 가격 업데이트
     calculateFinalPrice();
   }, [selectedCoupon, roomInfo]);
+
+  useEffect(() => {
+    const isVisitSelected = !!visit;
+    const isGuestInfoFilled = isSameAsBooker || (guestName.trim() !== '' && guestPhone.trim() !== '');
+
+    setIsPaymentEnabled(isVisitSelected && isGuestInfoFilled);
+  },[visit, guestName, guestPhone, isSameAsBooker]);
 
   const handleShowUserInfoEditModal = () => {
     setShowUserInfoEditModal(true);
@@ -132,9 +143,23 @@ const Payment = () => {
   };
 
   //방문 수단 선택
-  const [visit, setVisit] = useState('');
   const handleVisit = (event) => {
     setVisit(event.target.value);
+  };
+
+  //결제취소 버튼
+  const handleCancelPayment = () => {
+    navigate(-1);
+  };
+
+  //결제하기 버튼
+  const handleProceedPayment = () => {
+    if(isPaymentEnabled){
+      navigate('/tosscheckout');
+    }else{
+      console.log('필수 정보가 입력되지 않았습니다.');
+    }
+    
   };
 
   if (!hotelData) {
@@ -273,8 +298,12 @@ const Payment = () => {
           <div className="text-wrapper-28">
             할인 금액<span>{Number(initialDiscountAmount + couponDiscountAmount).toLocaleString()}원</span>
           </div>
-          <div className="text-wrapper-3">
+          <div className="text-wrapper-3 mb-5">
             총 결제 금액<span>{Number(finalPrice).toLocaleString()}원</span>
+          </div>
+          <div className='text-center'>
+            <Button className='btn-secondary me-2' onClick={handleCancelPayment}>결제취소</Button>
+            <Button onClick={handleProceedPayment} disabled={!isPaymentEnabled}>결제하기</Button>
           </div>
         </div>
         <ReservationGuide show={showModal} onHide={handleCloseModal} />
