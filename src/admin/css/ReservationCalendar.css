@@ -1,0 +1,138 @@
+.calendar-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.calendar-section {
+  flex: 1;
+  overflow: hidden;
+}
+
+.rbc-calendar {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  background-color: #fff;
+  border: none;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.rbc-month-view {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.rbc-header {
+  background-color: #f8f1e8;
+  border-bottom: 1px solid #ddd;
+  padding: 6px 0;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 요일 색상 강조 */
+.rbc-month-view .rbc-row .rbc-header:first-child {
+  color: #d9534f;
+}
+.rbc-month-view .rbc-row .rbc-header:last-child {
+  color: #0275d8;
+}
+
+.rbc-day-bg {
+  border: 1px solid #eee;
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.rbc-day-bg:hover {
+  background-color: #f5f5f5;
+}
+
+.rbc-date-cell {
+  text-align: center;
+  padding-top: 4px;
+  font-weight: 500;
+  color: #222;
+}
+
+/* 오늘 날짜 강조 */
+.rbc-today {
+  background-color: #fef9e7 !important;
+  border: 1px solid #f5c66e !important;
+  border-radius: 6px !important;
+}
+
+/* 선택된 셀 */
+.rbc-selected-cell,
+.rbc-day-bg.selected {
+  background-color: #d0ebff !important;
+  border-radius: 6px !important;
+}
+
+/* 이벤트 카드 */
+.rbc-event {
+  background-color: #f4e3c1 !important;
+  border: none !important;
+  color: #5d4632 !important;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Pretendard', sans-serif;
+  padding: 2px 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 95%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 auto;
+}
+
+.rbc-event-content {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 2px;
+}
+
+.rbc-event-label {
+  display: none;
+}
+
+.rbc-month-row {
+  min-height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 외곽 모서리 둥글게 */
+.rbc-month-row:first-child .rbc-day-bg:first-child {
+  border-top-left-radius: 12px;
+}
+.rbc-month-row:first-child .rbc-day-bg:last-child {
+  border-top-right-radius: 12px;
+}
+.rbc-month-row:last-child .rbc-day-bg:first-child {
+  border-bottom-left-radius: 12px;
+}
+.rbc-month-row:last-child .rbc-day-bg:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+body {
+  overflow-x: hidden;
+}
