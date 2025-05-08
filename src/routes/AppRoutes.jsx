@@ -15,7 +15,6 @@ import AdminLogin from '../admin/pages/AdminLogin';
 import AdminDashboard from '../admin/pages/AdminDashboard';
 import DiscountSettings from '../admin/pages/DiscountSettings';
 import InquiryManagement from '../admin/pages/InquiryManagement';
-import ReservationList from '../admin/pages/ReservationList';
 import ReservationToggle from '../admin/pages/ReservationToggle';
 import ReviewManagement from '../admin/pages/ReviewManagement';
 import RoomPriceEdit from '../admin/pages/RoomPriceEdit';
@@ -32,7 +31,7 @@ const AppRoutes = () => {
         <>
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/reservations" element={<ReservationList />} />
+     
             <Route path="/admin/reviews" element={<ReviewManagement />} />
             <Route path="/admin/close-open" element={<ReservationToggle />} />
             <Route path="/admin/discount" element={<DiscountSettings />} />
