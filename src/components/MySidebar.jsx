@@ -15,6 +15,9 @@ const MySidebar = ({ selected, onSelect }) => {
         <li className={selected === 'reviews' ? 'active' : ''} onClick={() => onSelect('reviews')}>
           내 리뷰
         </li>
+        <li className={selected === 'inquiry' ? 'active' : ''} onClick={() => onSelect('inquiry')}>
+          내 문의
+        </li>
       </ul>
     </div>
   );

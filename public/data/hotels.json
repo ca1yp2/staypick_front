@@ -6,7 +6,8 @@
     "category": "호텔",
     "price": 246495,
     "image": "image1.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "054-123-4567"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "category": "게스트하우스",
     "price": 152218,
     "image": "image2.png",
-    "detaillocation": "제주특별자치도 제주시 구좌읍 한동리 2005"
+    "detaillocation": "제주특별자치도 제주시 구좌읍 한동리 2005",
+    "tel": "064-234-5678"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "category": "호텔",
     "price": 284921,
     "image": "image3.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "02-3456-7890"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "category": "호텔",
     "price": 282236,
     "image": "image4.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "02-4567-8901"
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@
     "category": "호텔",
     "price": 73264,
     "image": "image5.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "051-567-1234"
   },
   {
     "id": 6,
@@ -51,7 +56,8 @@
     "category": "호텔",
     "price": 128683,
     "image": "image6.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "051-678-2345"
   },
   {
     "id": 7,
@@ -60,7 +66,8 @@
     "category": "호텔",
     "price": 244755,
     "image": "image7.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "033-789-3456"
   },
   {
     "id": 8,
@@ -69,7 +76,8 @@
     "category": "펜션",
     "price": 244554,
     "image": "image8.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "064-890-4567"
   },
   {
     "id": 9,
@@ -78,7 +86,8 @@
     "category": "호텔",
     "price": 126029,
     "image": "image9.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "064-901-5678"
   },
   {
     "id": 10,
@@ -87,7 +96,8 @@
     "category": "게스트하우스",
     "price": 235340,
     "image": "image10.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "033-234-6789"
   },
   {
     "id": 11,
@@ -96,7 +106,8 @@
     "category": "호텔",
     "price": 240742,
     "image": "image11.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "02-5678-1234"
   },
   {
     "id": 12,
@@ -105,7 +116,8 @@
     "category": "펜션",
     "price": 197288,
     "image": "image12.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "064-678-2345"
   },
   {
     "id": 13,
@@ -114,7 +126,8 @@
     "category": "호텔",
     "price": 289232,
     "image": "image13.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "02-6789-3456"
   },
   {
     "id": 14,
@@ -123,7 +136,8 @@
     "category": "호텔",
     "price": 99498,
     "image": "image14.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "032-789-4567"
   },
   {
     "id": 15,
@@ -132,7 +146,8 @@
     "category": "펜션",
     "price": 87416,
     "image": "image15.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "033-890-5678"
   },
   {
     "id": 16,
@@ -141,7 +156,8 @@
     "category": "펜션",
     "price": 136553,
     "image": "image16.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "051-901-6789"
   },
   {
     "id": 17,
@@ -150,7 +166,8 @@
     "category": "게스트하우스",
     "price": 191104,
     "image": "image17.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "02-7890-1234"
   },
   {
     "id": 18,
@@ -159,7 +176,8 @@
     "category": "호텔",
     "price": 293348,
     "image": "image18.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "054-234-5678"
   },
   {
     "id": 19,
@@ -168,7 +186,8 @@
     "category": "호텔",
     "price": 208954,
     "image": "image19.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "02-8901-2345"
   },
   {
     "id": 20,
@@ -177,6 +196,7 @@
     "category": "호텔",
     "price": 78451,
     "image": "image20.png",
-    "detaillocation": "경북 경주시 탑동 20-2"
+    "detaillocation": "경북 경주시 탑동 20-2",
+    "tel": "051-234-5678"
   }
 ]
