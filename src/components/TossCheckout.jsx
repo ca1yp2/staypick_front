@@ -1,6 +1,6 @@
 import { loadTossPayments, ANONYMOUS } from "@tosspayments/tosspayments-sdk";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import '../css/components/Toss.css'
 
 // TODO: clientKey는 개발자센터의 결제위젯 연동 키 > 클라이언트 키로 바꾸세요.
@@ -12,10 +12,14 @@ const customerKey = generateRandomString();
 
 export function TossCheckout() {
   const navigate = useNavigate();
+  const ulocation = useLocation();
+  const finalPriceFromPayment = ulocation.state?.finalPrice;
+  const hotelDataFromPayment = ulocation.state?.hotel;
+  const roomInfoFromPayment = ulocation.state?.room;
 
   const [amount, setAmount] = useState({
     currency: "KRW",
-    value: 50000,
+    value: finalPriceFromPayment || 1,
   });
   const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState(null);
@@ -76,7 +80,7 @@ export function TossCheckout() {
     }
 
     renderPaymentWidgets();
-  }, [widgets]);
+  }, [widgets, amount]);
 
   return (
     <div className="wrapper">
@@ -86,7 +90,7 @@ export function TossCheckout() {
         {/* 이용약관 UI */}
         <div id="agreement" />
         {/* 쿠폰 체크박스 */}
-        <div style={{ paddingLeft: "30px" }}>
+        {/* <div style={{ paddingLeft: "30px" }}>
           <div className="checkable typography--p">
             <label htmlFor="coupon-box" className="checkable__label typography--regular">
               <input
@@ -116,7 +120,7 @@ export function TossCheckout() {
               <span className="checkable__label-text">5,000원 쿠폰 적용</span>
             </label>
           </div>
-        </div>
+        </div> */}
 
         {/* 결제하기 버튼 */}
         <button
@@ -131,7 +135,7 @@ export function TossCheckout() {
               // 결제 과정에서 악의적으로 결제 금액이 바뀌는 것을 확인하는 용도입니다.
               await widgets.requestPayment({
                 orderId: generateRandomString(), // 고유 주문 번호
-                orderName: "토스 티셔츠 외 2건",
+                orderName: `${hotelDataFromPayment?.name || '숙소명 없음'} ${roomInfoFromPayment?.name || '객실명 없음'} 숙박/1박`,
                 successUrl: window.location.origin + "/tosssuccess", // 결제 요청이 성공하면 리다이렉트되는 URL
                 failUrl: window.location.origin + "/tossfail", // 결제 요청이 실패하면 리다이렉트되는 URL
                 customerEmail: "customer123@gmail.com",

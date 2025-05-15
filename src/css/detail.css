@@ -160,6 +160,11 @@
   line-height: 30px;
   white-space: nowrap;
 }
+.location-sub2 span {
+  color: #1f94ea;
+  cursor: pointer;
+  margin-left: 5px;
+}
 .mt-10 {
   margin-top: 50px !important;
 }

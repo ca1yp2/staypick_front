@@ -155,7 +155,13 @@ const Payment = () => {
   //결제하기 버튼
   const handleProceedPayment = () => {
     if(isPaymentEnabled){
-      navigate('/tosscheckout');
+      navigate('/tosscheckout', { 
+        state: { 
+          finalPrice: finalPrice,
+          hotel: hotelData,
+          room: roomInfo
+        } 
+      });
     }else{
       console.log('필수 정보가 입력되지 않았습니다.');
     }
