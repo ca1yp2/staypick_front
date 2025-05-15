@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import roomStatus from '../../../public/admin/data/room-status.json';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../css/AdminCloseOpen.css';
@@ -19,11 +18,19 @@ const getWeekRange = (base) => {
 };
 
 const AdminCloseOpen = () => {
+  const [roomStatus, setRoomStatus] = useState([]);
   const [baseDate, setBaseDate] = useState(new Date());
   const [openRooms, setOpenRooms] = useState({});
   const [closedDates, setClosedDates] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('전체');
   const [roomSearch, setRoomSearch] = useState('');
+
+  useEffect(() => {
+    fetch('/admin/data/room-status.json')
+      .then((res) => res.json())
+      .then((data) => setRoomStatus(data))
+      .catch((err) => console.error('room-status fetch 실패:', err));
+  }, []);
 
   const { start, end } = getWeekRange(baseDate);
 
