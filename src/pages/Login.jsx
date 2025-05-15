@@ -77,7 +77,7 @@ const Login = () => {
     window.location.href = '/mypage'; // navigate 써도 됨
   }}
 >
-  🛠 개발용 자동 로그인
+  개발용 자동 로그인
 </button>
     </div>
   );

@@ -36,7 +36,7 @@ const AdminSidebar = () => {
       <div className="admin-menu-section">
         <div className="menu-title">예약관리</div>
         <NavLink to="/admin/dashboard" className="admin-menu" activeclassname="active">예약달력</NavLink>
-        <NavLink to="/admin/reservations" className="admin-menu" activeclassname="active">예약내역 보기</NavLink>
+        <NavLink to="/admin/reservation" className="admin-menu" activeclassname="active">예약내역 보기</NavLink>
         <NavLink to="/admin/close-open" className="admin-menu" activeclassname="active">예약 닫기/열기</NavLink>
       </div>
 

@@ -55,43 +55,36 @@ const MyReviews = () => {
 
         return (
           <div key={review.id} className="review-card">
-            {/* 상단 숙소정보 */}
-            <div className="top-section">
-              <img
-                src={`/imgs/hotel-images/${hotel?.image || 'default.png'}`}
-                alt="호텔 이미지"
-                className="hotel-thumbnail"
-              />
-              <div className="hotel-info">
+            <div className="review-header">
+              <div>
                 <h3 className="hotel-name">{hotel?.name}</h3>
                 <p className="hotel-sub">{hotel?.location} / {room?.name}</p>
                 <p className="hotel-dates">체크인: {reservation?.checkIn} / 체크아웃: {reservation?.checkOut}</p>
               </div>
+              <p className="review-date">{review.createdAt}</p>
             </div>
 
-            {/* 하단 리뷰정보 */}
-            <div className="bottom-section">
-              {review.img && (
+            <div className="star-rating">
+              {[...Array(5)].map((_, i) => (
+                <FaStar
+                  key={i}
+                  className="star-icon"
+                  color={i < review.rating ? '#f39c12' : '#e0e0e0'}
+                />
+              ))}
+            </div>
+
+            <p className="review-content">{review.content}</p>
+
+            {review.img && (
+              <div className="review-images">
                 <img
                   src={`/imgs/review-images/${review.img}`}
                   alt="리뷰 이미지"
                   className="review-thumbnail"
                 />
-              )}
-              <div className="review-details">
-              
-                <div className="star-rating">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar
-                      key={i}
-                      className="star-icon"
-                      color={i < review.rating ? '#f39c12' : '#e0e0e0'}
-                    />
-                  ))}
-                </div>
-                <p className="review-content">{review.content}</p>
               </div>
-            </div>
+            )}
           </div>
         );
       })}

@@ -23,63 +23,31 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* 상단 숙소 정보 */
-.top-section {
+.review-header {
   display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.hotel-thumbnail {
-  width: 140px;
-  height: 100px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 1px solid #ccc;
-}
-
-.hotel-info {
-  flex: 1;
-  font-size: 14px;
-  color: #333;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .hotel-name {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .hotel-sub,
-.hotel-dates {
-  margin-bottom: 4px;
+.hotel-dates,
+.review-date {
+  font-size: 14px;
   color: #666;
-}
-
-/* 하단 리뷰 */
-.bottom-section {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.review-thumbnail {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.review-details {
-  flex: 1;
+  margin-bottom: 2px;
 }
 
 .review-content {
   font-size: 15px;
   line-height: 1.6;
   color: #444;
-  margin-bottom: 10px;
+  margin: 12px 0;
 }
 
 .star-rating {
@@ -90,4 +58,16 @@
   font-size: 16px;
   margin-right: 4px;
   vertical-align: middle;
+}
+
+.review-images {
+  margin-top: 10px;
+}
+
+.review-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
