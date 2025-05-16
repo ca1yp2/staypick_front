@@ -1,0 +1,111 @@
+.season-period-page {
+  padding: 20px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.period-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.period-form label {
+  font-weight: 500;
+}
+
+.period-form select,
+.period-form input[type="text"] {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 180px;
+}
+
+.add-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.period-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.period-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9fafb;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.period-item .type {
+  font-weight: bold;
+  color: #10b981;
+}
+
+.delete-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.save-section {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.save-btn {
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.auto-weekend-box {
+  margin-top: 30px;
+  padding: 16px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  background-color: #f9fafb;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.auto-weekend-box h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #475569;
+  width: 150px;
+}
+
+.weekend-btn {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
