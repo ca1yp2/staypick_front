@@ -1,0 +1,117 @@
+.review-page {
+  width: 100%;
+  padding: 24px 40px;
+  font-family: 'Pretendard', sans-serif;
+  box-sizing: border-box;
+}
+
+.review-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* 전체 레이아웃: 테이블 + 우측 상세 */
+.review-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* 📋 리뷰 리스트 테이블 */
+.review-table-wrapper {
+  flex: 2;
+  overflow-x: auto;
+}
+
+.review-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.review-table th,
+.review-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.review-table th {
+  background-color: #f3f6fa;
+  font-weight: 500;
+}
+
+.review-table tbody tr:nth-child(even) {
+  background-color: #fafbfd;
+}
+
+.review-table .preview {
+  text-align: left;
+  font-size: 13px;
+  color: #333;
+}
+
+.review-table button {
+  padding: 6px 12px;
+  background-color: #4f84ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.review-table button:hover {
+  background-color: #3a6bd8;
+}
+
+/* 🧾 우측 상세 패널 */
+.review-panel {
+  flex: 1;
+  min-width: 300px;
+  max-width: 360px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.review-panel h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.review-panel p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.review-panel .review-image {
+  margin-top: 12px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  object-fit: cover;
+}
+
+/* 버튼 영역 */
+.panel-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.panel-actions button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #bbb;
+  color: white;
+  cursor: pointer;
+}
+
+.panel-actions button:hover {
+  background-color: #999;
+}

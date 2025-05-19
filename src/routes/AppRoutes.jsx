@@ -22,8 +22,7 @@ import AdminLogin from '../admin/pages/AdminLogin';
 import AdminDashboard from '../admin/pages/AdminDashboard';
 import AdminReservation from '../admin/pages/AdminReservation';
 import DiscountSettings from '../admin/pages/DiscountSettings';
-import InquiryManagement from '../admin/pages/InquiryManagement';
-import ReservationToggle from '../admin/pages/AdminCloseOpen';
+import AdminInquries  from '../admin/pages/AdminInquiries';
 import ReviewManagement from '../admin/pages/ReviewManagement';
 import RoomPriceEdit from '../admin/pages/RoomPriceEdit';
 import SeasonPeriod from '../admin/pages/SeasonPeriod';
@@ -48,7 +47,7 @@ const AppRoutes = () => {
         <Route path="reviews" element={<ReviewManagement />} />
         <Route path="close-open" element={<AdminCloseOpen />} />
         <Route path="discount" element={<DiscountSettings />} />
-        <Route path="inquiries" element={<InquiryManagement />} />
+        <Route path="inquiries" element={<AdminInquries />} />
         <Route path="price" element={<RoomPriceEdit />} />
         <Route path="season" element={<SeasonPeriod />} />
         <Route path="*" element={<Navigate to="/admin/dashboard" />} />
