@@ -52,8 +52,13 @@
     font-weight: 600;
     color: #0d6efd;
   }
-  .right a.admin-login {
+  .right .admin-login {
     margin-left: 10px; 
     font-weight: 500;
     color: #0d6efd; 
+  }
+
+  .right button{
+    border: none;
+    background-color: #fff;
   }

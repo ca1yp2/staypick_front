@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
                 //atob(복호화 코드) Base64를 통해 암호화된 코드를 복호화 하는 함수
                 const payload = JSON.parse(atob(savedToken.split(".")[1]));
                 const user = {
-                    username: payload.sub,
+                    username: payload.username,
                     role: payload.role
                 };
                 setAuth({

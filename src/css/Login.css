@@ -41,6 +41,9 @@ input:focus { outline:none; }
   margin-top: 40px;
   margin-left: 10px;
 }
+.social div{
+  display: inline-block;
+}
 .social button{
   display: block;
   margin: 10px auto;
