@@ -1,4 +1,4 @@
-// src/components/mypage/MySidebar.jsx
+
 import React from 'react';
 import '../css/MyPage.css';
 

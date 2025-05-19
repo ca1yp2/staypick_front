@@ -14,7 +14,7 @@ const MyInquiries = () => {
     const fetchData = async () => {
       try {
         const [resInquiries, resHotels] = await Promise.all([
-          axios.get('/data/inquiry.json'),  // inquiry.json 파일
+          axios.get('/data/inquiry.json'),
           axios.get('/data/hotels.json'),
         ]);
 
@@ -52,7 +52,10 @@ const MyInquiries = () => {
                 <p className="inquiry-box-content">문의 제목: {inquiry.title}</p>
                 <p className="inquiry-box-content">문의 내용: {inquiry.content}</p>
                 <p className="inquiry-box-content">문의 날짜: {inquiry.date}</p>
-                <p className="inquiry-box-content">문의 상태: <span className={`status ${statusClass}`}>{statusText}</span></p>
+                <div className="inquiry-box-content status-line">
+                  <span className="label">문의 상태:</span>
+                  <span className={`status-badge ${statusClass}`}>{statusText}</span>
+                </div>
                 {inquiry.comment && (
                   <p className="inquiry-box-content comment">문의 답변: {inquiry.comment}</p>
                 )}

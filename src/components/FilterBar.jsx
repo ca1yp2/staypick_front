@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RiMapPinLine, RiFilter3Line } from 'react-icons/ri';
+import { RiMapPinLine } from 'react-icons/ri';
 import RegionModal from './RegionModal';
 import DateRangePicker from './DateRangePicker';
 import '../css/components/FilterBar.css';
@@ -10,12 +10,18 @@ const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch, o
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('전체선택');
+  const [selectedSort, setSelectedSort] = useState('recommend'); // 기본값 추천순
 
   const categories = [
     { label: '전체선택', value: '전체선택' },
     { label: '호텔/모텔', value: '호텔' },
     { label: '펜션/풀빌라', value: '펜션' },
     { label: '게하/한옥', value: '게스트하우스' },
+  ];
+
+  const sortOptions = [
+    { label: '추천순', value: 'recommend' },
+    { label: '가격낮은 순', value: 'price-asc' }
   ];
 
   const handleSelect = (value) => {
@@ -39,8 +45,10 @@ const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch, o
     onSearch && onSearch();
   };
 
-  const handleSortClick = () => {
-    onSortChange && onSortChange('price-asc'); // 정렬 기준을 문자열로 넘김
+  const handleSortChange = (e) => {
+    const value = e.target.value;
+    setSelectedSort(value);
+    onSortChange && onSortChange(value);
   };
 
   return (
@@ -79,9 +87,13 @@ const FilterBar = ({ onRegionChange, onDateChange, onCategoryChange, onSearch, o
         </div>
 
         <div className="right-options">
-        <div className="sort-filter" onClick={handleSortClick} style={{ cursor: 'pointer' }}>
-            <RiFilter3Line /> 가격낮은 순
-          </div>
+          <select className="sort-dropdown" value={selectedSort} onChange={handleSortChange}>
+            {sortOptions.map(opt => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 

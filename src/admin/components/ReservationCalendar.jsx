@@ -9,7 +9,7 @@ import CustomToolbar from './CustomToolbar';
 moment.locale('ko');
 const localizer = momentLocalizer(moment);
 
-// ✅ 이벤트 텍스트 표시용
+//이벤트 텍스트 표시용
 const MyEvent = ({ event }) => <span>{event.title}</span>;
 
 const ReservationCalendar = ({ reservations, selectedDate, onSelectDate }) => {
@@ -19,7 +19,7 @@ const ReservationCalendar = ({ reservations, selectedDate, onSelectDate }) => {
     new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const today = getOnlyDate(new Date());
 
-  // ✅ 이벤트 스타일 강제 중앙정렬
+  // 이벤트 스타일 강제 중앙정렬
   const eventStyleGetter = () => {
     return {
       style: {
@@ -44,7 +44,7 @@ const ReservationCalendar = ({ reservations, selectedDate, onSelectDate }) => {
     const grouped = {};
 
     reservations.forEach((res) => {
-      const raw = res?.checkOutDate;
+      const raw = res?.checkOut;
       if (!raw || !moment(raw, 'YYYY-MM-DD', true).isValid()) return;
 
       const key = moment(raw, 'YYYY-MM-DD').format('YYYY-MM-DD');
@@ -52,25 +52,27 @@ const ReservationCalendar = ({ reservations, selectedDate, onSelectDate }) => {
       grouped[key].push(res);
     });
 
-    return Object.entries(grouped).map(([dateKey, resList], index) => {
-      const date = moment(dateKey, 'YYYY-MM-DD').toDate();
-      const roomName = String(resList[0]?.roomName || '객실');
-      const count = resList.length;
-      const title = count > 1 ? `${roomName} 외 ${count - 1}건` : roomName;
+      return Object.entries(grouped).map(([dateKey, resList], index) => {
+        const date = moment(dateKey, 'YYYY-MM-DD').toDate();
+        const fullRoomName = String(resList[0]?.roomName || '객실');
+        const roomOnly = fullRoomName.split(' ')[0]; // "504호 (프리미엄 더블)" → "504호"
+        const count = resList.length;
+        const title = count > 1 ? `${roomOnly} 외 ${count - 1}건` : roomOnly;
 
-      return {
-        id: index,
-        title,
-        start: date,
-        end: date,
-        allDay: true,
-        resource: resList,
-      };
-    });
+        return {
+          id: index,
+          title,
+          start: date,
+          end: date,
+          allDay: true,
+          resource: resList,
+        };
+      });
+
   };
 
   const events = createEvents();
-  console.log('🧪 생성된 이벤트:', events);
+  console.log('생성된 이벤트:', events);
 
   return (
     <div className="calendar-wrapper">
@@ -95,7 +97,7 @@ const ReservationCalendar = ({ reservations, selectedDate, onSelectDate }) => {
             toolbar: CustomToolbar,
             event: MyEvent,
           }}
-          eventPropGetter={eventStyleGetter} // ✅ 핵심 부분
+          eventPropGetter={eventStyleGetter} // 핵심 부분
           messages={{
             showMore: () => '',
           }}

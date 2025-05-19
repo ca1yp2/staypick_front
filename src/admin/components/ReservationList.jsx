@@ -6,8 +6,8 @@ const ReservationList = ({ reservations, selectedDate, onSelectReservation }) =>
 
   const filteredReservations = reservations.filter(res => {
     const sel = new Date(selectedDate);
-    const inDate = new Date(res.checkInDate);
-    const outDate = new Date(res.checkOutDate);
+    const inDate = new Date(res.checkIn);
+    const outDate = new Date(res.checkOut);
     const selStr = sel.toDateString();
     const inStr = inDate.toDateString();
     const outStr = outDate.toDateString();
@@ -15,8 +15,6 @@ const ReservationList = ({ reservations, selectedDate, onSelectReservation }) =>
     if (inStr === outStr) return selStr === inStr;
     return sel >= inDate && sel < outDate;
   });
-
- 
 
   return (
     <div className="reservation-summary-box">
@@ -31,8 +29,8 @@ const ReservationList = ({ reservations, selectedDate, onSelectReservation }) =>
             >
               <span className="room-badge">{res.roomName}</span>
               <div>
-                체크인: {res.checkInDate}<br />
-                체크아웃: {res.checkOutDate}<br />
+                체크인: {res.checkIn}<br />
+                체크아웃: {res.checkOut}<br />
                 {res.guestName}님
               </div>
             </div>

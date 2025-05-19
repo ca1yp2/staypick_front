@@ -102,3 +102,11 @@
   font-size: 16px;
   cursor: pointer;
 }
+.sort-dropdown {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+}

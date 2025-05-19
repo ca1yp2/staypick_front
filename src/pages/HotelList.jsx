@@ -77,6 +77,19 @@ const HotelList = () => {
     if (sortType === 'price-asc') {
       const sorted = [...filteredHotels].sort((a, b) => a.price - b.price);
       setFilteredHotels(sorted);
+    } else if (sortType === 'recommend') {
+      const sorted = [...filteredHotels].sort((a, b) => {
+        const avgA =
+          a.reviews.length > 0
+            ? a.reviews.reduce((sum, r) => sum + r.rating, 0) / a.reviews.length
+            : 0;
+        const avgB =
+          b.reviews.length > 0
+            ? b.reviews.reduce((sum, r) => sum + r.rating, 0) / b.reviews.length
+            : 0;
+        return avgB - avgA; 
+      });
+      setFilteredHotels(sorted);
     }
   };
   
@@ -93,20 +106,19 @@ const HotelList = () => {
         onSortChange={handleSortChange}
       />
 
-      {/*검색 전에는 아무 것도 안 보이게 */}
-      {hasSearched && (
-        <div className="hotel-card-container">
-          {filteredHotels.length > 0 ? (
-            filteredHotels.map((hotel) => (
-              <HotelCard key={hotel.id} hotel={hotel} />
-            ))
-          ) : (
-            <p>검색 결과가 없습니다.</p>
-          )}
-        </div>
+       {/* 항상 호텔 리스트를 출력 */}
+       <div className="hotel-card-container">
+      {filteredHotels.length > 0 ? (
+        filteredHotels.map((hotel) => (
+          <HotelCard key={hotel.id} hotel={hotel} />
+        ))
+      ) : (
+        <p>검색 결과가 없습니다.</p>
       )}
     </div>
-  );
+  </div>
+);
+
 };
 
 export default HotelList;
