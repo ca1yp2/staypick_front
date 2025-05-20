@@ -6,7 +6,7 @@
   font-family: 'Pretendard', sans-serif;
 }
 
-h2 {
+.season-period-page.full-width > h2 {
   font-size: 24px;
   margin-bottom: 24px;
   color: #2b2b2b;
