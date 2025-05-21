@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
-import '../css/register.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom'; // location 추가
 import axios from 'axios';
+import '../css/register.css';
 
 const Register = () => {
-    const [inputId, setInputId] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { isKakaoUser = false, 
+        userid = ''
+    } = location.state || {};
+
+    const [inputId, setInputId] = useState(userid);
     const [inputPw, setInputPw] = useState('');
     const [inputRepw, setInputRepw] = useState('');
     const [inputName, setInputName] = useState('');
@@ -20,10 +26,15 @@ const Register = () => {
     const [nameError, setNameError] = useState('');
     const [phoneError, setPhoneError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [idAvailable, setIdAvailable] = useState(false);
+    const [error, setError] = useState('');
 
-    const [idAvailable, setIdAvailable] = useState(false); // 아이디 중복 확인 상태
-
-    const navigate = useNavigate();
+    useEffect(() => {
+        if(isKakaoUser) {
+            setInputId(userid);
+            setInputName('');
+        }
+    }, [isKakaoUser, userid]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -41,18 +52,14 @@ const Register = () => {
         }
     };
 
-    // 아이디 중복 확인
     const handleIdCheck = async () => {
         if (!inputId.trim()) {
             setIdError('아이디를 입력해주세요.');
             return;
         }
         try {
-            // 요청 보내기 전에 로그를 찍어 확인
-            console.log(`GET 요청: http://localhost:8081/api/auth/check-id/${inputId}`);
-
-             const response = await axios.get(`http://localhost:8081/api/auth/check-id/${inputId}`, {
-                withCredentials: true // 자격 증명과 함께 요청 보내기 (쿠키 등)
+            const response = await axios.get(`http://localhost:8081/api/auth/check-id/${inputId}`, {
+                withCredentials: true
             });
             if (response.data === 'OK') {
                 setIdAvailable(true);
@@ -71,16 +78,19 @@ const Register = () => {
         e.preventDefault();
         let isValid = true;
 
-        // 유효성 검사 (기존 검사 로직 유지)
-        if (!inputId.trim()) { setIdError('아이디를 입력해주세요.'); isValid = false; }
-        else if (inputId.length < 6 || inputId.length > 20) { setIdError('아이디를 6~20자 이하로 작성해주세요.'); isValid = false; }
-        else if (!idAvailable) { setIdError('아이디 중복 확인을 해주세요.'); isValid = false; }
+        // 🔹 비밀번호 및 아이디 유효성 체크는 일반 유저만
+        if (!isKakaoUser) {
+            if (!inputId.trim()) { setIdError('아이디를 입력해주세요.'); isValid = false; }
+            else if (inputId.length < 6 || inputId.length > 20) { setIdError('아이디를 6~20자 이하로 작성해주세요.'); isValid = false; }
+            else if (!idAvailable) { setIdError('아이디 중복 확인을 해주세요.'); isValid = false; }
 
-        if (!inputPw.trim()) { setPwError('비밀번호를 입력해주세요.'); isValid = false; }
-        if (!inputRepw.trim()) { setRePwError('비밀번호 확인을 입력해주세요.'); isValid = false; }
-        else if (inputPw !== inputRepw) { setRePwError('비밀번호가 일치하지 않습니다.'); isValid = false; }
+            if (!inputPw.trim()) { setPwError('비밀번호를 입력해주세요.'); isValid = false; }
+            if (!inputRepw.trim()) { setRePwError('비밀번호 확인을 입력해주세요.'); isValid = false; }
+            else if (inputPw !== inputRepw) { setRePwError('비밀번호가 일치하지 않습니다.'); isValid = false; }
+        }
 
         if (!inputName.trim()) { setNameError('이름을 입력해주세요.'); isValid = false; }
+
         if (!inputPhone.trim()) { setPhoneError('전화번호를 입력해주세요.'); isValid = false; }
         else if (inputPhone.length !== 11) { setPhoneError('전화번호를 11자리로 입력해주세요.("-" 제외)'); isValid = false; }
 
@@ -89,20 +99,30 @@ const Register = () => {
 
         if (!isValid) return;
 
+        // 🔹 birth 포맷 변환 ("yyyy-MM-dd")
         const birth = birthYear && birthMonth && birthDay
-            ? `${birthYear}-${birthMonth.padStart(2, '0')}-${birthDay.padStart(2, '0')}T00:00:00`
-            : null; // 백엔드의 LocalDateTime 형식에 맞춤
+            ? `${birthYear}-${birthMonth.padStart(2, '0')}-${birthDay.padStart(2, '0')}`
+            : null;
 
         try {
-            const response = await axios.post('http://localhost:8081/api/auth/register', { 
-                userid: inputId,
-                password: inputPw,
-                inputRepw: inputRepw,
+            // 🔹 요청 보낼 URL 선택
+            const endpoint = isKakaoUser
+                ? 'http://localhost:8081/api/auth/kakao-register'
+                : 'http://localhost:8081/api/auth/register';
+
+            const payload = {
+                userid: inputId || kakaoUserId || null, // 카카오 유저면 kakaoUserId 사용
+                password: isKakaoUser ? null : inputPw,
+                inputRepw: isKakaoUser ? null : inputRepw,
                 username: inputName,
                 tel: inputPhone,
                 email: inputEmail,
                 birth: birth,
-            });
+                isKakaoUser: isKakaoUser
+            };
+
+            await axios.post(endpoint, payload);
+
             alert('회원가입 성공! 로그인 페이지로 이동합니다.');
             navigate('/login');
         } catch (error) {
@@ -111,7 +131,6 @@ const Register = () => {
         }
     };
 
-    const [error, setError] = useState('');
 
     return (
         <form name="join_form" onSubmit={handleSubmit} id="join_form">
@@ -119,132 +138,48 @@ const Register = () => {
                 <h1>회원가입</h1>
                 {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
                 <div className="signUpPage-box">
-                    <div className="signUpTitle">
-                        아이디
-                        <span className="error-message">{idError}</span>
+                    {isKakaoUser && (
+                        <>
+                            <div className="signUpTitle">아이디</div>
+                            <input type="text" name="inputId" value={inputId} readOnly />
+                        </>
+                    )}
+
+                    {!isKakaoUser && (
+                        <>
+                            <div className="signUpTitle">아이디 <span className="error-message">{idError}</span></div>
+                            <input type="text" name="inputId" value={inputId} onChange={handleInputChange} />
+                            <button type="button" onClick={handleIdCheck}>중복확인</button>
+
+                            <div className="signUpTitle">비밀번호 <span className="error-message">{pwError}</span></div>
+                            <input type="password" name="inputPw" value={inputPw} onChange={handleInputChange} />
+
+                            <div className="signUpTitle">비밀번호 확인 <span className="error-message">{rePwError}</span></div>
+                            <input type="password" name="inputRepw" value={inputRepw} onChange={handleInputChange} />
+                        </>
+                    )}
+
+                    <div className="signUpTitle">이름 <span className="error-message">{nameError}</span></div>
+                    <input type="text" name="inputName" value={inputName} onChange={handleInputChange} />
+
+                    <div className="signUpTitle">전화번호 <span className="error-message">{phoneError}</span></div>
+                    <input type="text" name="inputPhone" value={inputPhone} onChange={handleInputChange} />
+
+                    <div className="signUpTitle">이메일 <span className="error-message">{emailError}</span></div>
+                    <input type="email" name="inputEmail" value={inputEmail} onChange={handleInputChange} />
+
+                    <div className="signUpTitle">생년월일(선택)</div>
+                    <div className="birth-box">
+                        <input type="text" name="birth-year" placeholder="년" value={birthYear} onChange={handleInputChange} />
+                        <select name="birth-month" value={birthMonth} onChange={handleInputChange}>
+                            {[...Array(12)].map((_, i) => (
+                                <option key={i + 1} value={i + 1}>{i + 1}</option>
+                            ))}
+                        </select>
+                        <input type="text" name="birth-day" placeholder="일" value={birthDay} onChange={handleInputChange} />
                     </div>
-                    <input
-                        type="text"
-                        name="inputId"
-                        id="inputId"
-                        placeholder="아이디 입력(6~20자이하)"
-                        maxLength="20"
-                        value={inputId}
-                        onChange={handleInputChange}
-                    />
-                    <button className="idCheck-btn" type="button" onClick={handleIdCheck}>
-                        중복확인
-                    </button>
-                    <div className="signUpTitle">
-                        비밀번호
-                        <span className="error-message">{pwError}</span>
-                    </div>
-                    <input
-                        type="password"
-                        name="inputPw"
-                        id="inputPw"
-                        placeholder="비밀번호 입력"
-                        value={inputPw}
-                        onChange={handleInputChange}
-                    />
-                    <div className="signUpTitle">
-                        비밀번호 확인
-                        <span className="error-message">{rePwError}</span>
-                    </div>
-                    <input
-                        type="password"
-                        name="inputRepw"
-                        id="inputRepw"
-                        placeholder="비밀번호 재입력"
-                        value={inputRepw}
-                        onChange={handleInputChange}
-                    />
-                    <div className="signUpTitle">
-                        이름
-                        <span className="error-message">{nameError}</span>
-                    </div>
-                    <input
-                        type="text"
-                        name="inputName"
-                        id="inputName"
-                        placeholder="이름을 입력해주세요"
-                        value={inputName}
-                        onChange={handleInputChange}
-                    />
-                    <div className="signUpTitle">
-                        전화번호
-                        <span className="error-message">{phoneError}</span>
-                    </div>
-                    <input
-                        type="text"
-                        name="inputPhone"
-                        id="inputPhone"
-                        placeholder="휴대폰 번호 입력('-'제외 11자리 입력)"
-                        maxLength="11"
-                        value={inputPhone}
-                        onChange={handleInputChange}
-                        onInput={(e) => {
-                            e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
-                        }}
-                    />
-                    <div className="signUpTitle">
-                        이메일 주소
-                        <span className="error-message">{emailError}</span>
-                    </div>
-                    <input
-                        type="email"
-                        name="inputEmail"
-                        id="inputEmail"
-                        placeholder="이메일"
-                        value={inputEmail}
-                        onChange={handleInputChange}
-                    />
-                    <div className="signUpTitle">
-                        생년월일(선택)
-                        <div className="birth-box">
-                            <input
-                                type="text"
-                                name="birth-year"
-                                id="birth-year"
-                                placeholder="년(4자)"
-                                maxLength="4"
-                                value={birthYear}
-                                onChange={handleInputChange}
-                                onInput={(e) => {
-                                    e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 4);
-                                }}
-                            />
-                            <select name="birth-month" value={birthMonth} onChange={handleInputChange}>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                            <input
-                                type="text"
-                                name="birth-day"
-                                id="birth-day"
-                                placeholder="일"
-                                maxLength="2"
-                                value={birthDay}
-                                onChange={handleInputChange}
-                                onInput={(e) => {
-                                    e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 2);
-                                }}
-                            />
-                        </div>
-                    </div>
-                    <button type="submit" className="signUp-Check-btn submitButton">
-                        가입하기
-                    </button>
+
+                    <button type="submit" className="signUp-Check-btn submitButton">가입하기</button>
                 </div>
             </div>
         </form>
