@@ -6,13 +6,12 @@ import { useNavigate } from 'react-router-dom';
 
 const MyReservations = () => {
   const [reservations, setReservations] = useState([]);
-  const [hotels, setHotels] = useState([]);
-  const [rooms, setRooms] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [initialLoaded, setInitialLoaded] = useState(false);
 
   const userData = localStorage.getItem('user');
+  const token = localStorage.getItem('token');
   const user = userData ? JSON.parse(userData) : null;
   const navigate = useNavigate();
 
@@ -21,25 +20,22 @@ const MyReservations = () => {
 
     const fetchData = async () => {
       try {
-        const resReservations = await axios.get('/data/reservation.json');
-        const resHotels = await axios.get('/data/hotels.json');
-        const resRooms = await axios.get('/data/rooms.json');
+        const token = localStorage.getItem('token');
+        const res = await axios.get('http://localhost:8081/mypage/reservations', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
 
-        const myReservations = resReservations.data.filter(r => r.userId === user.id);
-        setReservations(myReservations);
-        setHotels(resHotels.data);
-        setRooms(resRooms.data);
+        setReservations(res.data);
         setInitialLoaded(true);
       } catch (err) {
-        console.error('데이터 불러오기 실패:', err);
+        console.error('예약 내역 불러오기 실패:', err);
       }
     };
 
     fetchData();
   }, [user, initialLoaded]);
-
-  const getHotelById = (id) => hotels.find(h => h.id === id);
-  const getRoomById = (id) => rooms.find(r => r.id === id);
 
   const handleCancelClick = (id) => {
     setSelectedId(id);
@@ -55,7 +51,7 @@ const MyReservations = () => {
   };
 
   const renderStatus = (status) => {
-    const normalized = status.toLowerCase().trim();
+    const normalized = status?.toLowerCase().trim();
     const statusMap = {
       confirmed: { text: '예약 완료', color: 'green' },
       cancelled: { text: '예약 취소', color: 'red' }
@@ -76,39 +72,32 @@ const MyReservations = () => {
         <p>예약 내역이 없습니다.</p>
       ) : (
         reservations.map((r) => {
-          const hotel = getHotelById(r.hotelId);
-          const room = getRoomById(r.roomId);
+          const thumbnailPath = `http://localhost:8081/upload/hotels/${encodeURIComponent(r.thumbnail)}`;
+
+          console.log(`[썸네일 경로] ${thumbnailPath}`);
 
           return (
             <div key={`${r.id}-${r.status}`} className="reservation-card">
               <img
-                src={`/imgs/hotel-images/${hotel?.image || 'default.png'}`}
-                alt={hotel?.name}
-                className="hotel-img"
+                src={thumbnailPath}
+                alt="썸네일"
+                className="reservation-thumbnail"
+                onError={(e) => {
+                  console.warn(`❌ 이미지 로드 실패: ${e.target.src}`);
+                  e.target.onerror = null; // 🔒 무한 루프 방지
+                  e.target.src = '/default.png'; // ⚠️ default.jpg는 public 디렉토리에 있어야 함
+                }}
               />
               <div className="reservation-info">
-                <h3>{hotel?.name || '호텔 정보를 찾을 수 없습니다'}</h3>
-                <p>{hotel?.location}</p>
-                <p>객실명: <strong>{room?.name || '객실 정보 없음'}</strong></p>
-                <p>{room?.extra}</p>
+                <h3>{r.accommodationName}</h3>
+                <p>객실명: <strong>{r.roomName}</strong></p>
                 <p>체크인: <strong>{r.checkIn}</strong> / 체크아웃: <strong>{r.checkOut}</strong></p>
-                <p>가격: {hotel?.price?.toLocaleString()}원</p>
                 <p>상태: {renderStatus(r.status)}</p>
 
                 {r.status === 'confirmed' && (
                   <div className="button-group">
-                    <button
-                      className="review-btn"
-                      onClick={() => navigate(`/review/write/${r.id}`)}
-                    >
-                      리뷰 쓰기
-                    </button>
-                    <button
-                      className="cancel-btn"
-                      onClick={() => handleCancelClick(r.id)}
-                    >
-                      예약 취소
-                    </button>
+                    <button className="review-btn" onClick={() => navigate(`/review/write/${r.id}`)}>리뷰 쓰기</button>
+                    <button className="cancel-btn" onClick={() => handleCancelClick(r.id)}>예약 취소</button>
                   </div>
                 )}
               </div>
