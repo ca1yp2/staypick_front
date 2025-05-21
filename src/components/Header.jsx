@@ -12,6 +12,7 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('token'); // 로컬 스토리지에서 토큰 제거
     setAuth({ user: null, token: null }); // ✅ 컨텍스트 상태 초기화
+    alert('로그아웃 되었습니다.');
     navigate('/'); // 홈으로 이동
   };
 
