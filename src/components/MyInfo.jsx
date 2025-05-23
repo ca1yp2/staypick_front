@@ -10,23 +10,29 @@ const MyInfo = () => {
 
   const [editedUser, setEditedUser] = useState({
     username: '',
-    name: '',
-    phone: '',
-    email: ''
+    email: '',
+    tel: ''
   });
 
   useEffect(() => {
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      const parsedUser = JSON.parse(userData);
-      setUser(parsedUser);
-      setEditedUser({
-        username: parsedUser.username || '',
-        name: parsedUser.name || '',
-        phone: parsedUser.phone || '',
-        email: parsedUser.email || '',
-      });
-    }
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get('http://localhost:8081/api/auth/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setUser(res.data);
+        setEditedUser({
+          username: res.data.userid || '',
+          email: res.data.email || '',
+          tel: res.data.tel || '',
+        });
+      } catch (err) {
+        console.error('⚠️ 사용자 정보 조회 실패:', err);
+      }
+    };
 
     const fetchCoupons = async () => {
       try {
@@ -37,6 +43,7 @@ const MyInfo = () => {
       }
     };
 
+    fetchUser();
     fetchCoupons();
   }, []);
 
@@ -44,11 +51,26 @@ const MyInfo = () => {
     setIsEditMode(true);
   };
 
-  const handleSaveClick = () => {
-    setIsEditMode(false);
-    setUser({ ...user, ...editedUser });
-    localStorage.setItem('user', JSON.stringify({ ...user, ...editedUser }));
-    alert('수정이 완료되었습니다.');
+  const handleSaveClick = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.put('http://localhost:8081/api/auth/profile', {
+        username: user.username,
+        email: editedUser.email,
+        tel: editedUser.tel
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      setUser(res.data);
+      setIsEditMode(false);
+      alert('✅ 수정이 완료되었습니다.');
+    } catch (err) {
+      console.error('❌ 사용자 정보 수정 실패:', err);
+      alert('정보 수정 중 오류가 발생했습니다.');
+    }
   };
 
   const handleInputChange = (e) => {
@@ -82,23 +104,11 @@ const MyInfo = () => {
           </div>
 
           <div className="info-row">
-            <label>이름</label>
-            <input
-              type="text"
-              value={editedUser.name}
-              name="name"
-              onChange={handleInputChange}
-              className="info-input"
-              readOnly={!isEditMode}
-            />
-          </div>
-
-          <div className="info-row">
             <label>전화번호</label>
             <input
               type="text"
-              value={editedUser.phone}
-              name="phone"
+              value={editedUser.tel}
+              name="tel"
               onChange={handleInputChange}
               className="info-input"
               readOnly={!isEditMode}

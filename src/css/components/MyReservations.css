@@ -19,23 +19,17 @@
   gap: 16px;
   padding: 16px;
   border: 1px solid #ddd;
-  border-radius: 12px;
+  border-radius: 8px;
   margin-bottom: 20px;
+  background-color: #fff;
   align-items: flex-start;
 }
 .reservation-thumbnail {
-  width: 160px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 8px;
   flex-shrink: 0;
-}
-.hotel-img {
-  margin-top: px;
-  width: 200px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 6px;
 }
 
 .reservation-info {

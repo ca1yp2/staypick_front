@@ -5,41 +5,49 @@ import { FaStar } from 'react-icons/fa';
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [hotels, setHotels] = useState([]);
-  const [rooms, setRooms] = useState([]);
-  const [reservations, setReservations] = useState([]);
-
-  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    if (!user) return;
+    const token = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
+    if (!token || !userData) return;
 
-    const fetchData = async () => {
+    const fetchReviews = async () => {
       try {
-        const [resReviews, resHotels, resRooms, resReservations] = await Promise.all([
-          axios.get('/data/reviews.json'),
-          axios.get('/data/hotels.json'),
-          axios.get('/data/rooms.json'),
-          axios.get('/data/reservation.json'),
-        ]);
-
-        const myReviews = resReviews.data.filter(r => r.userId === user.id);
-        setReviews(myReviews);
-        setHotels(resHotels.data);
-        setRooms(resRooms.data);
-        setReservations(resReservations.data);
+        const res = await axios.get('http://localhost:8081/api/reviews/mine', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setReviews(res.data);
       } catch (err) {
-        console.error('데이터 로딩 실패:', err);
+        console.error('❌ 리뷰 불러오기 실패:', err);
       }
     };
 
-    fetchData();
-  }, [user]);
+    fetchReviews();
+  }, []);
 
-  const getHotelById = (id) => hotels.find(h => h.id === id);
-  const getRoomById = (id) => rooms.find(r => r.id === id);
-  const getReservationByReview = (review) =>
-    reservations.find(r => r.hotelId === review.hotelId && r.roomId === review.roomId);
+  const userData = localStorage.getItem('user');
+  const user = userData ? JSON.parse(userData) : null;
+
+  const handleDelete = async (reviewId) => {
+    if (!window.confirm('정말 이 리뷰를 삭제하시겠습니까?')) return;
+
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`http://localhost:8081/api/reviews/${reviewId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      setReviews(prev => prev.filter(review => review.id !== reviewId));
+      alert('리뷰가 삭제되었습니다.');
+    } catch (err) {
+      console.error('❌ 리뷰 삭제 실패:', err);
+      alert('리뷰 삭제 중 오류가 발생했습니다.');
+    }
+  };
 
   if (!user) {
     return <div className="review-container">⚠️ 로그인이 필요합니다.</div>;
@@ -48,20 +56,21 @@ const MyReviews = () => {
   return (
     <div className="review-container">
       <h2 className="review-title">내가 작성한 리뷰</h2>
-      {reviews.map((review) => {
-        const hotel = getHotelById(review.hotelId);
-        const room = getRoomById(review.roomId);
-        const reservation = getReservationByReview(review);
-
-        return (
+      {reviews.length === 0 ? (
+        <p>작성한 리뷰가 없습니다.</p>
+      ) : (
+        reviews.map((review) => (
           <div key={review.id} className="review-card">
             <div className="review-header">
               <div>
-                <h3 className="hotel-name">{hotel?.name}</h3>
-                <p className="hotel-sub">{hotel?.location} / {room?.name}</p>
-                <p className="hotel-dates">체크인: {reservation?.checkIn} / 체크아웃: {reservation?.checkOut}</p>
+                <h3 className="hotel-name">{review.accommodationName}</h3>
+                <p className="hotel-sub">{review.roomName}</p>
+                <p className="hotel-dates">체크인: {review.checkIn} / 체크아웃: {review.checkOut}</p>
               </div>
-              <p className="review-date">{review.createdAt}</p>
+              <div className="review-meta">
+                <p className="review-date">{review.createdAt}</p>
+                <button className="delete-btn" onClick={() => handleDelete(review.id)}>삭제</button>
+              </div>
             </div>
 
             <div className="star-rating">
@@ -76,18 +85,18 @@ const MyReviews = () => {
 
             <p className="review-content">{review.content}</p>
 
-            {review.img && (
+            {review.imageUrl && (
               <div className="review-images">
                 <img
-                  src={`/imgs/review-images/${review.img}`}
+                  src={`http://localhost:8081${review.imageUrl}`}
                   alt="리뷰 이미지"
                   className="review-thumbnail"
                 />
               </div>
             )}
           </div>
-        );
-      })}
+        ))
+      )}
     </div>
   );
 };

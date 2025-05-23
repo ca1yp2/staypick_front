@@ -42,19 +42,34 @@ const MyReservations = () => {
     setOpenModal(true);
   };
 
-  const confirmCancel = () => {
+  const confirmCancel = async () => {
+  try {
+    await axios.put(`http://localhost:8081/api/reservations/${selectedId}/cancel`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
     const updated = reservations.map(r =>
       r.id === selectedId ? { ...r, status: 'cancelled' } : r
     );
     setReservations(updated);
     setOpenModal(false);
-  };
+    alert('예약이 성공적으로 취소되었습니다.');
+      } catch (err) {
+        console.error('❌ 예약 취소 실패:', err);
+        alert('예약 취소에 실패했습니다. 다시 시도해 주세요.');
+      }
+    };
 
   const renderStatus = (status) => {
     const normalized = status?.toLowerCase().trim();
+
     const statusMap = {
       confirmed: { text: '예약 완료', color: 'green' },
-      cancelled: { text: '예약 취소', color: 'red' }
+      cancelled: { text: '예약 취소', color: 'red' },
+      '예약완료': { text: '예약 완료', color: 'green' },
+      '취소됨': { text: '예약 취소', color: 'red' }
     };
 
     const { text, color } = statusMap[normalized] || { text: '알 수 없음', color: 'gray' };
